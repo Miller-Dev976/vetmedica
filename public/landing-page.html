@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetMedica — Sistema Completo para Clínicas Veterinárias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" /> <!-- usada para adicionar as fontes de letras -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+
+    *, *::before, *::after{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root{
+      --azul:       #0b3d91;
+      --azul-claro: #1a6fd4;
+      --azul-brilho:#3b8ef0;
+      --azul-suave: #e8f1fc;
+      --branco:     #ffffff;
+      --creme:      #fafbfe;
+      --texto:      #1a2234;
+      --texto-medio:#4a5568;
+      --texto-fraco: #7b8ba5;
+      --verde:      #10b981;
+      --verde-fundo:#ecfdf5;
+      --laranja:    #f59e0b;
+      --coral:      #f43f5e;
+    }
+    
+    html{
+        scroll-behavior: smooth;
+    }
+
+    body{
+        font-family: 'Outfit', sans-serif;
+        color: var(--texto);
+        background: var(--branco);
+        overflow-x: hidden;
+    }
+
+    /* navegação FIXA no TOPO */
+    .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 16px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(11, 61, 145, 0.06);
+        transition: padding 0.3s;
+    }
+    .nav-logo{
+        display: flex;
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--azul);
+        letter-spacing: -0.5px;
+        text-decoration: none;
+        align-items: center;
+    }
+    .nav-logo span{
+        color: var(--azul-brilho);
+    }
+    .caixa-logo{
+        width: 44px;
+        height: 44px;
+        display: flex;
+        flex-shrink: 0;
+        box-shadow: 0 4px 16px rgba(59, 142, 240, 0.35);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1a6fd4, #3b8ef0);
+        border-radius: 9px;
+        margin-right: 11px;
+    }
+    .nav-links{
+        display: flex;
+        gap: 32px;
+        align-items: center;
+    }
+    .nav-links a{
+        text-decoration: none;
+        color: var(--texto-medio);
+        font-size: 15px;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .nav-links a:hover{
+        color: var(--azul);
+    }
+    .nav-cta{
+        background: var(--azul) !important;
+        color: #fff !important;
+        padding: 10px 24px;
+        border-radius: 11px;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        transition: transform 0.2s, box-shadow 0.2s !important;
+        box-shadow: 0 4px 30px rgba(11, 61, 145, 0.25);
+    }
+    .nav-cta:hover{
+        transform: translateY(-3px); /* Essa parte faz o movimento para cima - assim que eu passo o cursor por cima do botão */
+        box-shadow: 0 8px 30px rgba(11, 61, 145, 0.35) !important;
+    }
+
+    /* 3 barrinhas */
+    .nav-barrinhas{
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 5px;
+        padding: 4px;
+    }
+    .nav-barrinhas span{
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--azul);
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
+
+    /*
+        APRESENTAÇÃO DESIGN - SEÇÃO PRINCIPAL
+        trazendo um grande impacto visual com gradiante e formas decorativas
+    */
+    .apre{
+        position: relative;
+        min-height: 100vh; /* Esse "100vh -> quer dizer que eu quero que esteja 100% da altura da VIEWPORT(janela de visualização do navegador)" */
+        display: flex;
+        align-items: center;
+        padding: 140px 40px 80px;
+        background: 
+            radial-gradient(ellipse 80% 60% at 70% 30%, rgba(59,142,240,0.08) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 50% at 20% 80%, rgba(11,61,145,0.05) 0%, transparent 60%),
+            var(--creme);
+        overflow: hidden;
+    }
+
+    /* conteudo design */
+    .apre-conteudo{
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+    .apre-ponto{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--branco);
+        border: 1px solid rgba(11, 61, 145, 0.1);
+        border-radius: 50px;
+        padding: 8px 20px 8px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--azul-claro);
+        margin-bottom: 24px;
+        box-shadow: 0 0 8px rgba(11, 61, 145, 0.06);
+    }
+    .ponto-verde{
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--verde);
+        box-shadow: 0 0 8px rgba(16,185,129,0.5);
+     /* animation: pulsar 1s infinite; */
+    }
+
+    /* Design do titulo e descrição */
+    .apre h1{
+        font-family: 'Libre Baskerville', serif;
+        font-size: 58px;
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--azul);
+        margin-bottom: 20px;
+    }
+    .apre h1 em{
+        font-style: italic;
+        color: var(--azul-brilho);
+    }
+    .apre-descricao{
+        font-size: 18px;
+        color: var(--texto-medio);
+        line-height: 1.7;
+        margin-bottom: 36px;
+        max-width: 480px;
+    }
+
+    /* design de botoes */
+    .botoes{
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    .botao-primario{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        background: var(--azul);
+        padding: 16px 32px;
+        text-decoration: none;
+        border: none;
+        border-radius: 13px;
+        box-shadow: 0 8px 30px rgba(11,61,145,0.3);
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        transition: transform 0.4s, box-shadow 0.2s;
+    }
+    .botao-primario:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(11, 61, 145, 0.4);
+    }
+    .botao-primario:active{
+        transform: translateY(2px); /* indicação de quando eu clico no botão a animação dele vai para baixo indicado pelo translateY(3px) */
+    }
+    .botao-secundario{
+        font-family: inherit;
+        display: flex;
+        align-items: center;
+        background: var(--branco);
+        color: var(--azul);
+        font-size: 16px;
+        font-weight: 700;
+        padding: 10px 22px;
+        text-decoration: none;
+        border-radius: 13px;
+        border: 2px solid rgba(11, 61, 145, 0.12);
+        transition: transform 0.4s;
+    }
+    .botao-secundario:hover{
+        transform: translateY(-3px);
+        border-color: 2px solid rgba(11, 61, 145, 0.12);
+        background: var(--azul-suave);
+    }
+
+    /* DESIGN SECAO NUMEROS E RESULTADOS */
+    .secao-numeros{
+        padding: 48px 40px;
+        background: var(--branco);
+        border-top: 1px solid rgba(11, 61, 145, 0.06);
+        border-bottom: 1px solid rgba(11, 61, 145, 0.06);
+    }
+    .grade-num{
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .secao-numeros p{
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: var(--texto-fraco);
+        text-transform: uppercase; /* deixa as letras maiusculas */
+        margin-bottom: 28px;
+    }
+    .display-resultado{
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        flex-wrap: wrap; /* quando você for dar zoom, os elementos dentro dele vamo quebrar as linhas, permitindo que um fique embaixo da outra */
+    }
+    .display-item{
+        text-align: center;
+    }
+    .display-valor{
+        font-size: 40px;
+        font-weight: 800;
+        color: var(--azul);
+        line-height: 1; /* faz com que as linhas de texto não fique coladas uma nas outras */
+    }
+    .display-desc{
+        font-size: 14px;
+        color: var(--texto-fraco);
+        margin-top: 6px; /* criar um espaçamento no topo da margin da class="display-desc" -> pra que fique um pouco distando do elemento do texto do valores */
+    }
+
+    /* DESIGN SEÇÃO "QUEM SOMOS" */
+    .secao{
+        padding: 100px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .secao-qs{
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--azul-brilho);
+        background: var(--azul-suave);
+        padding: 6px 20px;
+        border-radius: 6px;
+        letter-spacing: 1.9px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    .secao-titulo{
+        color: var(--azul);
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 700;
+        font-family: 'Libre Baskerville', sans-serif;
+        line-height: 1.25;
+        margin-bottom: 20px;
+    }
+    .secao-desc{
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--texto-medio);
+        max-width: 640px;
+    }
+    /* design das informações da class='grid' */
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* cria um layout de duas colunas com larguras iguais */
+        gap: 60px;
+        align-items: center;
+        margin-top: 48px;
+    }
+    .grid-imagem{
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, var(--azul-suave), #dbeafe);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .grid-icone-grande{
+        font-size: 120px;
+        opacity: 0.3;
+    }
+    .grid-card{
+        position: absolute;
+        background: var(--branco);
+        border-radius: 16px;
+        padding: 18px 22px;
+        box-shadow: 0 12px 40px rgba(11,61,145,0.12);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+    .grid-card.topo{
+        top: 24px;
+        right: 24px;
+    }
+    .grid-card.baixo{
+        bottom: 24px;
+        left: 24px;
+    }
+    .icone-grid{
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+    .grid-texto{
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--texto);
+    }
+    .grid-subtexto{
+        font-size: 12px;
+        color: var(--texto-fraco);
+        margin-top: 2px;
+    }
+
+    /* DESIGN FORMULARIO DE SOLICITACAO */
+    .secao-formulario{
+        padding: 100px 40px;
+        background: var(--creme);
+    }
+    .form-secao{
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+    .form-tag{
+        padding: 6px 20px;
+        border-radius: 6px;
+        letter-spacing: 1.9px;
+        text-transform: uppercase;
+        background: var(--azul-suave);
+        color: var(--azul-brilho);
+        font-size: 13px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+    .form-titulo{
+        color: var(--azul);
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 700;
+        font-family: 'Libre Baskerville', sans-serif;
+        line-height: 1.25;
+        margin-bottom: 20px;
+    }
+    .form-desc{
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--texto-medio);
+        max-width: 640px;
+    }
+    .form-check{
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .form-icone{
+        padding: 10px 10px;
+        border-radius: 50px;
+        background: #7fff9b50;
+        color: #0eb123;
+        font-weight: 700;
+    }
+    .form-texto{
+        font-size: 15px;
+        color: var(--texto-medio);
+    }
+    .form-card{
+        background: var(--branco);
+    }
+
+    /* DESIGN RODAPE */
+    footer{
+        padding: 48px;
+        background: var(--azul);
+        color: rgba(255, 255, 255, .6);
+    }
+    .rodape{
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .rodape-logo{
+        font-size: 20px;
+        font-weight: 800;
+        color: #fff;
+        display: flex;
+        align-items: center;
+    }
+    .rodape-logo img{
+        background: linear-gradient(135deg, var(--azul-brilho), var(--azul-claro));
+        padding: 2px;
+        border-radius: 7px;
+        margin-right: 4px;
+    }
+    .rodape-logo span{
+        color: var(--azul-brilho);
+    }
+    .rodape-menu{
+        display: flex;
+        gap: 16px;
+    }
+    .rodape-menu a{
+        color: rgba(255, 255, 255, .5);
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+    .rodape-menu a:hover{
+        color: #fff;
+    }
+    .rodape-direito{
+        font-size: 13px;
+    }
+
+    
+   
+
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <nav class="nav">
+
+        <!-- Logo da Empresa -->
+        <a href="#" class="nav-logo">
+            <div class="caixa-logo">
+                <img src="img/Design sem nome.png" alt="VetMedica" width="40px">
+            </div>
+                Vet<span>Medica</span>
+        </a>
+    
+
+        <div class="nav-links" id="nav-links">
+            <a href="#sobre">Quem Somos</a>
+            <a href="#funcionalidades">Funcionalidades</a>
+            <a href="#diferencial">Diferenciais</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#acesso">Solicitar Acesso</a>
+            <a href="login.html" class="nav-cta">Já tenho acesso →</a>
+        </div>
+
+        <button class="nav-barrinhas" id="nav-barrinhas">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Apresentação -->
+     <section class="apre">
+        <div class="apre-conteudo">
+            <div>
+                <div class="apre-ponto">
+                    <div class="ponto-verde"></div> <!-- Quero que tenha um ponto bilhando para que de a entender que estamos ONLINE -->
+                    Sistema 100% online e seguro
+                </div>
+                    <h1>A gestão da sua clínica veterinária, <em>simplificada</em></h1>
+                    <p class="apre-descricao">
+                        Prontuário digital, agenda inteligente, controle de vacinas e portal do tutor — tudo em uma única plataforma feita por quem entende a rotina veterinária.
+                    </p>
+                <div class="botoes">
+                    <a href="#contato" class="botao-primario">Solicitar demostração  gratuita →</a>
+                    <a href="#funcionalidades" class="botao-secundario">Ver funcionalidades</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAINEL ADMINISTRATIVO -->
+
+
+     </section>
+
+<!-- 
+     RESULTADOS QUE FALAM POR SI SÓ -> NOVA FUNÇÃO SEÇÃO 
+ -->
+    <div class="secao-numeros">
+        <div class="grade-num">
+            <p>Resultados que falam por si</p>
+            <div class="display-resultado">
+
+                <!-- INFORMAÇÕES DOS NÚMEROS -->
+                <div class="display-item">
+                    <div class="display-valor">120+</div>
+                    <div class="display-desc">Clínicas ativas</div> 
+                </div>
+                <div class="display-item">
+                    <div class="display-valor">45 mil</div>
+                    <div class="display-desc">Pets cadastrados</div> 
+                </div>
+                <div class="display-item">
+                    <div class="display-valor">98%</div>
+                    <div class="display-desc">Satisfação dos clientes</div> 
+                </div>
+                <div class="display-item">
+                    <div class="display-valor">24/7</div>
+                    <div class="display-desc">Suporte disponível</div> 
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!--
+     SEÇÃO | QUEM SOMOS 
+-->
+     <section class="secao">
+            <span class="secao-qs">Quem somos</span>
+            <h2 class="secao-titulo">Tecnologia feita por quem vive a rotina veterinária</h2>
+            <p class="secao-desc">
+                Nascemos da frustação real das clínicas veterinárias que perdiam tempo com planilhas, agenda de papel e fichas soltas. Pensando nisso,criamos a VetMedica para te ajudar com a solução prática.
+            </p>
+
+            <!-- layout do prontuário -->
+            <div class="grid">
+                <div class="grid-imagem">
+                    <div class="grid-icone-grande">🐾</div>
+
+                    <div class="grid-card topo">
+                        <div class="icone-grid" style="background: #ecfdf5;">🩺</div>
+                            <div>
+                                <div class="grid-texto">Prontuário digital</div>
+                                <div class="grid-subtexto">Acesso em qualquer lugar</div>
+                            </div>
+                    </div>
+
+                    <div class="grid-card baixo">
+                        <div class="icone-grid" style="background: #fef8ec;">📊</div>
+                            <div>
+                                <div class="grid-texto">Dashboard em tempo real</div>
+                                <div class="grid-subtexto">Controle financeiro completo</div>
+                            </div>
+                    </div>
+                </div>    
+
+                <!-- Descrição da gente -->
+                <p class="secao-desc">
+                    Somos um equipe de desenvolvedores e profissionais da área pet, unidos pela missão de tornar a gestão veterinária mais eficiente, organizada e humana.
+                </p> 
+                <div>
+                    <div>✓</div>
+                    <div>
+                        <strong>Equipe de TI</strong> - desenvolvedores, designers trabalhando juntos para criar a melhor solução.
+                    </div>
+                </div>
+                <div>
+                    <div>✓</div>
+                    <div>
+                        <strong>Foco no mercado brasileiro</strong> - sistema em português, com suporte local a adequado às necessidades das clínicas daqui.
+                    </div>
+                </div>
+                <div>
+                    <div>✓</div>
+                    <div>
+                        <strong>Evolução constante</strong> - novas funcionalidades são lançadas todo mês com base no feedback real dos nossos clientes.
+                    </div>
+                </div>
+            </div>    
+            
+     </section>
+
+<!-- 
+     FORMULARIO DE SOLICITAÇÃO
+-->
+     <section class="secao-formulario">
+        <div class="form-secao">
+
+            <!-- INFORMAÇÕES DA SOLICITAÇÃO -->
+            <div>
+                <span class="form-tag">Solicitar Acesso</span>
+                <h2 class="form-titulo">Pronto para transformar<br>sua clínica?</h2>
+                <p class="form-desc" style="margin-bottom: 24px;">Preencha o formulário ao lado cin is dados da sua clínica. Nossa equipe irá analisar, criar seu acesso e entrar em contato por WhatsApp com seu login e senha.</p>
+                <p class="form-desc"><strong>Como funciona:</strong></p>
+                <div class="form-check" style="margin-top: 16px;">
+                    <div class="form-icone">1</div>
+                    <div class="form-texto">Você preenche o formulário com os dados da clínica</div>
+                </div>
+                <div class="form-check">
+                    <div class="form-icone">2</div>
+                    <div class="form-texto">Nossa equipe recebe e configura o sistema pra você</div>
+                </div>
+                <div class="form-check">
+                    <div class="form-icone">3</div>
+                    <div class="form-texto">Você recebe o login WhatsApp e já pode usar</div>
+                </div>
+            </div>
+
+            <!-- FORMULARIO DA SOLICITAÇÃO -->
+            <div>
+                <div class="form-card">
+                    <div>
+                        <h3>Solicitar Demostração</h3>
+                        <p>Todos os campos são obrigatórios</p>
+                        <form>
+                            <label class="label-form">Nome Completo</label>
+                            <input class="form-campo" placeholder="Seu nome" required />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+<!-- 
+     RODAPÉ DA PÁGINA 
+-->
+     <footer>
+        <div class="rodape">
+            <div class="rodape-logo">
+                <img src="img/Design sem nome.png" alt="VetMedica" width="35px">
+                Vet<span>Medica</span>
+            </div>
+                <div class="rodape-menu">
+                    <a href="#sobre">Quem Somos</a>
+                    <a href="#funcionalidades">Funcionalidades</a>
+                    <a href="#diferencial">Diferenciais</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a href="#equipe">Equipe</a>
+                    <a href="#acesso">Solicitar Acesso</a>
+                    <a href="login.html">Já tenho acesso</a>
+                </div>
+            <div class="rodape-direito">© 2026 VetMedica. Todos os direitos reservados.</div>
+        </div>
+     </footer>
+     
+<script>
+
+    lucide.createIcons();
+
+
+</script>
+</body>
+</html>
