@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coração de Pet - login</title>
+    <style>
+
+        /* Remove margens e paddings padrão do navegador -> box-sizing: border box facilita o cálculo de larguras*/
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* declara variaveis de cor pra facilitar ajuste futuros */
+        :root{
+            --fundo:         #e9f0f7;   /* cor de fundo geral da página */
+            --superficie:    #ffffff;   /* cor do cartão central */
+            --borda:         #c8d8e8;   /* cor das bordas dos inputs e do cartão */
+            --destaque:      #1a6fd4;   /* azul principal — botões, título */
+            --destaque-claro:#3b8ef0;   /* azul mais claro para gradientes */
+            --texto:         #1e2a3a;   /* cor do texto principal */
+            --texto-secundario: #6b7fa0;/* cor de labels e textos auxiliares */
+            --erro:          #e05252;   /* vermelho para mensagens de erro */
+        }
+
+        /* estilo do corpo da página */
+        body{
+            font-family: 'DM Sans', sans-serif;
+            background: var(--fundo);
+            color: var(--texto); 
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Fundo decorado com dois gradiantes radiais, criando um efeito de "brilho" suave atrás do container */
+        body::before{
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 60% 50% at 20% 40%, #1a6fd41a 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 70%, #60b0ff12 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* design do container principal */
+        .container{
+            position: relative;
+            z-index: 1;
+            background: var(--superficie);
+            border: 1px solid var(--borda);
+            border-radius: 20px;
+            padding: 44px 40px;
+            width: 100%;
+            max-width: 390px;
+            box-shadow: 0 24px 64px #1a6fd41a;
+        }
+
+        /* Logotipo - design */
+        .logotipo{
+            width: 64px;
+            height: 73px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #1a6fd4, #3b8ef0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            box-shadow: 0 8px 24px #1a6fd433;
+        }
+
+        /* Titulo e Subtitulo -> corde de destaque azul o titulo, já o subtitulo usar uma cor secundária  */
+        .titulo{
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--destaque);
+        }
+        .subtitulo{
+            text-align: center;
+            font-size: 13px;
+            color: var(--texto-secundario);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* rotulo dos campos */
+        .rotulo{
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--texto-secundario);
+            margin-bottom: 6px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        /*Agrupador de input ->posicionar o botão de mostrar e esconder senha dentr4o do campo*/
+        .campo-grupo{
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        /* Campo de texto e senha -> fundo acizentado pra diferenciar do cartão branco. */
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            background: #f2f6fb;
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 12px 44px 12px 16px;
+            color: var(--texto);
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: border-color .2s;
+        }
+         input:focus {
+            border-color: var(--destaque);
+            box-shadow: 0 0 0 3px #1a6fd41a; /* anel de foco azul translúcido */
+        }
+        input.erro { 
+            border-color: var(--erro); 
+        }
+
+        /* botão mostrar e esconder senha -> posicionado no canto direito do input. transform: translateY(-50%) centraliza verticalmente em relação ao campo */
+        .alternar-senha {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--texto-secundario);
+            font-size: 18px;
+            user-select: none;
+            transition: color .2s;
+        }
+        .alternar-senha:hover { 
+            color: var(--texto); 
+        }
+        
+        /* botao principal -> gradiante azul com o texto branco */
+            .botao-principal {
+                width: 100%;
+                padding: 13px;
+                background: linear-gradient(135deg, #1a6fd4, #3b8ef0);
+                color: #fff;
+                border: none;
+                border-radius: 12px;
+                font-family: inherit;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: opacity .2s, transform .1s;
+                margin-top: 4px;
+                box-shadow: 0 4px 16px #1a6fd433;
+            }
+            .botao-principal:hover   { 
+                opacity: .9; 
+            }
+            .botao-principal:active  { 
+                transform: scale(.98); 
+            }
+            .botao-principal:disabled { 
+                opacity: .5; cursor: not-allowed; 
+            }
+
+            /* Mensagem de erro -> oculta por padrão usando display:none. Quando a class ".visivel" é adicionada via JS, a mensagem aparece com funcio vermelho e borda vermelha */
+            .mensagem-erro{
+                display: none;
+                background: #e0525218;
+                border: 1px solid #e0525244;
+                border-radius: 10px;
+                padding: 10px 14px;
+                font-size: 13px;
+                color: var(--erro);
+                margin-bottom: 16px;
+                text-align: center;
+            }
+            .mensagem-erro.visivel{
+                display: block;
+            }
+            .esqueceu{
+                text-align: center;
+                margin-top: 26px;
+                font-size: 13px;
+                color: var(--texto-secundario);
+            }
+
+    </style>
+</head>
+<body>
+
+    <!-- CONTAINER PRINCIPAL DO LOGIN - Centralizado-->
+    <div class="container">
+
+        <!-- Logo do Google Fonts icon -->
+        <div class="logotipo">
+            <img src="img/Design sem nome.png" alt="vet-medica" width="64px">
+        </div>
+
+        <!-- Nome da clínica e descrição breve -->
+        <h1 class="titulo">VetMedica</h1>
+        <p class="subtitulo">Clínica Veterinária - Área restrita.<br>Faça login para continuar</p>
+
+        <!-- Mensagem de erro caso o usuario ou senha estiverem incorreta (oculta, só aparece vi Java Script) -->
+         <div class="mensagem-erro" id="mensagem-erro">
+            Usuário ou senha incorretos. Tente novamente.
+         </div>
+
+         <!-- Formulário de login - Campos de usuário e senha (Envio será tratado via Java Script) -->
+          <form id="formulario-login">
+
+            <!-- Campo Usuário -->
+             <label class="rotulo" for="usuario">Usuário</label>
+             <div class="campo-grupo">
+                <input type="text" id="usuario" name="usuario" placeholder="seu.usuario" autocomplete="username" required />
+             </div>
+
+             <!-- Campo senha (com botão para mostrar senha e esconde) -->
+              <label class="rotulo" for="senha">Senha</label>
+              <div class="campo-grupo">
+                <input type="password" id="senha" name="senha" placeholder="••••••••••" autocomplete="current-password" required />
+                <span class="alternar-senha" id="alternar" title="Mostrar senha">👁️</span>
+
+              </div>
+            
+              <button type="submit" class="botao-principal" id="botao-principal">
+                Entrar
+              </button>
+
+          </form>
+
+        <p class="esqueceu">
+            <a href="#">Esqueceu a senha?</a>
+        </p>
+    </div>
+
+</body>
+</html>

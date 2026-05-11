@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Medica - Cadastro de Funcionário</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=visibility" />
+    <style>
+
+        /* Reset - removendo margnes e paddings padrão */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* variaveis de cor - facilitando na hora de colocar cores padrão */
+        :root{
+            --fundo:           #e9f0f7;
+            --superficie:      #ffffff;
+            --borda:           #c8d8e8;
+            --destaque:        #1a6fd4;
+            --destaque-claro:  #3b8ef0;
+            --texto:           #1e2a3a;
+            --texto-secundario:#6b7fa0;
+            --erro:            #e05252;
+            --verde:           #22a869;
+            --verde-fundo:     #eafaf1;
+        }
+
+        /* Corpo da página centralizado na tela */
+        body{
+            font-family: "DM Sans", sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        /*fundo decorativo com efeito de brilho no login usando "before" */
+        body::before{
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 60% 50% at 20% 40%, #1a6fd41a 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 70%, #60b0ff12 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Container principal do formulario -> mantendo o mesmo design do login e mesma estrutura */
+        .container{
+            position: relative;
+            z-index: 1;
+            background: var(--superficie);
+            border: 1px solid var(--borda);
+            border-radius: 20px;
+            padding: 44px 40px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 24px 64px #1a6fd41a;
+        }
+
+        /* design do logotipo */
+        .logotipo{
+            width: 64px;
+            height: 74px;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #1a6fd4, #3b8ef0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            box-shadow: 0 8px 24px #1a6fd433;
+            overflow: hidden; /* Controla o que acontece com o conteudo dentro dessa class -> no caso usei o elemento hidden caso o conteúdo que está dentro dessa caixa fosse grande seria cortada */
+        }
+
+        /* Titulo e subtitulo -> seguindo a mesma regra do login */
+        .titulo{
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 4px; /* aqui ele cria um espaço vazio, empurrando tudo que vem depois para baixa dele */
+            color: var(--destaque);
+        }
+        .subtitulo{
+            text-align: center;
+            font-size: 13px;
+            color: var(--texto-secundario);
+            margin-bottom: 30px;
+            line-height: 1.5; /* aqui eu dei um espaçamento entre as duas linhas que tem nese subtitulo -> pois coloquei a tag <br> de quebra de linha */
+        }
+
+        /* Separador de seções -> criar uma linha horizontal fina com título para dividir o formulário em blocos: Dados pessoais, dados profissionais e dados de acesso */
+        .separador{
+            display: flex;
+            align-items: center;
+            gap: 12px; /* faz um espaçamento entre linhas e colunas */
+            margin: 28px 0 18px;
+        }
+        .separa-texto{
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase; /* Deixa as letras maiusculas */
+            letter-spacing: 0.08em; /* faz um espaçamento entre as letras */
+            color: var(--destaque);
+            white-space: nowrap;
+        }
+
+        /* criando uma linha decorativa */
+        .separador::after{
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--borda);
+        }
+
+        /* rotulos dos campos */
+        .rotulo{
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--texto-secundario);
+            margin-bottom: 5px;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        /* campo-grupo -> mesmo parão de login. posotion: relative permite posicionar ícones e botões dentro do campo */
+        .campo-grupo{
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        /* Campos de formularios -> seriam os inputs de texto, senha, data, telefone e selects */
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        input[type="tel"],
+        select{
+            width: 100%;
+            background: #f2f6fb;
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--texto);
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: border-color .02s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input:focus,
+        select:focus{
+            border-color: var(--destaque);
+            box-shadow: 0 0 0 3px #1a6fd41a;
+        }
+        input.erro,
+        select.erro{
+            border-color: var(--erro);
+        }
+
+        /* Select customizado -> a seta padrão do navegador é removida com appearance: none. Em troca, criamos uma seta manual via pseudo-elemento no wrapper .campo-select */
+        .campo-select{
+            position: relative;
+        }
+        .campo-select::after {
+            content: '▾';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--texto-secundario);
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        /* linha dupla, ou seja dois campos lado a lado -> usado para CPF + data de nascimento, telefone + sexo, etc. Em telas menores empilha verticalmente */
+        .linha-dupla{
+            display: flex;
+            gap: 12px;
+        }
+        .linha-dupla .campo-grupo{
+            flex: 1;
+        }
+
+        /* Campo CRMV -> Só aparece quando é selecionado o carog  de "Veterinário". Controlado via JS. Usei o max-height + overflow para animar a abertura/fechamento suavemente */
+        .campo-condicional{
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, margin 0.3 ease;
+            margin-bottom: 0;
+        }
+        .campo-condicional.visivel{
+            max-height: 100px;
+            margin-bottom: 16px;
+        }
+
+        /* botao mostrar/esconder senha -> segue o mesmo estilo do login */
+        .material-symbols-outlined{
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--texto-secundario);
+            font-size: 18px;
+            user-select: none;
+            transition: color .2s;
+        }
+        .material-symbols-outlined:hover{
+            color: var(--texto);
+        }
+
+        /* indicador de força da senha -> uma barrinha horizontal que muda de cor conforme a complexidade */
+        .forca-senha{
+            display: flex;
+            gap: 4px;
+            margin-top: 8px;
+        }
+        .forca-barra{
+            height: 4px;
+            border-radius: 2px;
+            flex: 1;
+            background: #e0e6ef;
+            transition: background 0.3s;
+        }
+        .forca-texto{
+            font-size: 11px;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Botao principal - mesmo gradiante azul do login */
+        .botao-principal{
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #1a6fd4, #3b8ef0);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity .2s, transform .1s;
+            margin-top: 8px;
+            box-shadow: 0 4px 16px #1a6fd433;
+        }
+        .botao-principal:hover{
+            opacity: .9;
+        }
+        .botao-principal:active{
+            transform: scale(.98);
+        }
+        .botao-principal:disabled{
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        /* Mensagem de ERRO e SUCESSO ->erro fundo vermelho > sucesso fundo verde. Ambas ocultals por padrãp */
+        .mensagem-erro{
+            display: none;
+            background: #e0525218;
+            border: 1px solid #e0525218;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: var(--erro);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .mensagem-erro.visivel{
+            display: block;
+        }
+
+        .mensagem-sucesso{
+            display: none;
+            background: var(--verde-fundo);
+            border: 1px solid #22a86944;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: var(--verde);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .mensagem-sucesso.visivel{
+            display: block;
+        }
+
+        /* estilo do LINK "JÁ TEM UMA CONTA?" -> vai seguir o mesmo ao "Esqueceu a senha?" do login*/
+        .link{
+            text-align: center;
+            margin-top: 22px;
+            font-size: 14px;
+            color: var(--texto-secundario);
+        }
+        .link a{
+            color: var(--destaque);
+            text-decoration: none; /* remove a underline do "href" */
+            font-weight: 600;
+        }
+        .link a:hover{
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        /* Estilizando o campo-dica de texto auxiliar pequenno que fica em baixo do input do CPF */
+        .campo-dica{
+            font-size: 11px;
+            color: var(--texto-secundario);
+            margin-top: 4px;
+        }
+
+        /* INPUT com PADDING extra -> para o campo que tem o botão/icone de olho (mostrar/esconder) posicionado dentro do input */
+        .campo-grupo input.material-symbols-outlined{
+            padding-right: 44px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Container principal do cadastro -> seguindo o mesmo padrão da págin de login -->
+    <div class="container">
+
+        <!-- loco da clínica -->
+        <div class="logotipo">
+            <img src="img/Design sem nome.png" alt="vet-medica" width="64px">
+        </div>
+
+        <!-- Titulo da empresa e descrição da página -->
+        <h1 class="titulo">VetMedica</h1>
+        <p class="subtitulo">Cadastro de novo funcionário. <br><b>Preenhca todos os campos abaixo.</b></p>
+
+        <!-- Mnesagem de erro (ocultas) -> só vai aparecer com o javascript configurado -->
+        <div class="mensagem-erro" id="mensagem-erro"></div>
+        <div class="mensagem-sucesso" id="mensagem-sucesso"></div>
+
+        <!-- formulário de cadastro -> dividida em 3 seções: dados pessoais > dados profissionais > dados de acesso -->
+        <!-- O action aponta para o backend que vai inserir no MySQL -->
+        <form id="formulario">
+
+<!-- 
+==============================================================
+===============   Seção -> DADOS PESSOAIS   ==================
+==============================================================
+-->
+             <div class="separador">
+                <span class="separa-texto">Dados Pessoais</span>
+             </div>
+
+             <!-- CAMPO NOME COMPLETO -->
+              <label for="nome" class="rotulo">Nome completo</label>
+             <div class="campo-grupo">
+                <input type="text" id="nome" name="nome" placeholder="Ex: Maria da Silva" required> <!-- required = siginifica que os dados precisam ser obrigatórios -->
+             </div>
+
+            <!-- cpf e data de nascimento lado a lado -->
+            <!-- CAMPO CPF -->
+            <div class="linha-dupla">
+                <div class="campo-grupo">
+                    <label class="rotulo" for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" minlength="12"> <!-- maxLength = significa que ´limite máximo de caracteres é 14 | minLength = significa o mínimo de caracter que pode ser inserido -->
+                        <div class="campo-dica">Somente números - a máscara é automática</div>
+                </div>
+                <!-- CAMPO DATA DE NASCIMENTO -->
+                <div class="campo-grupo">
+                    <label class="rotulo" for="nascimento">Data de Nascimento</label>
+                    <input type="date" id="nascimento" name="nascimento" required>
+                </div>
+            </div>
+            
+            <!-- TELEFONE E SEXO -> LADO A LADO -->
+            <div class="linha-dupla">
+                <!-- TELEFONE -->
+                <div class="campo-grupo">
+                    <label class="rotulo" for="telefone">Telefone</label>
+                    <input type="tel" name="telefone" id="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
+                </div>
+                <!-- SEXO -->
+                <div class="campo-grupo">
+                    <label class="rotulo" for="sexo">Sexo</label>
+                    <div class="campo-select">
+                        <select name="sexo" id="sexo" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                            <option value="O">Outros</option>
+                            <option value="P">Prefiro não dizer</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAMPO E-MAIL -->
+            <label for="email" class="rotulo">E-mail</label>
+            <div class="campo-grupo">
+                <input type="email" id="email" name="email" placeholder="seu.email@examplo.com" required>
+            </div>
+
+<!-- 
+===================================================================
+===============   Seção -> DADOS PROFISSIONAIS   ==================
+===================================================================
+-->
+             <div class="separador">
+                <span class="separa-texto">Dados Profissionais</span>
+             </div>
+
+             <!-- cargo / função -->
+            <label for="cargo" class="rotulo">Cargo / Função</label>
+            <div class="campo-grupo">
+                <div class="campo-select">
+                    <select name="cargo" id="cargo" required>
+                        <option value="" disabled selected>Selecione o cargo</option>
+                        <option value="veterinario">Veterinário</option>
+                        <option value="recepcionista">Recepcionista</option>
+                        <option value="auxiliar">Auxiliar</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- CRMV - só aparece se o cargo for "veterinário" -> oculto apenas aparece quando é selecionado o cargo de veterinário -->
+            <div class="campo-condicional" id="campo-crmv">
+                <label for="crmv" class="rotulo">CRMV (registro profissional)</label>
+                    <div class="campo-grupo">
+                        <input type="text" id="crmv" name="crmv" placeholder="Ex: CRMV-SP 12345" />
+                        <div class="campo-dica">Obrigatório para veterinários - informe UF e número</div>
+                    </div>
+            </div>
+
+<!-- 
+=================================================================
+===============   Seção 3 -> DADOS DE ACESSO   ==================
+=================================================================
+-->
+             <div class="separador">
+                <span class="separa-texto">Dados de Acesso</span>
+             </div>
+
+            <!-- Usuário do sistema -->
+            <label for="usuario" class="rotulo">Nome de usuário</label>
+                <div class="campo-grupo">
+                    <input type="text" id="usuario" name="usuario" placeholder="ex: maria.silva" required>
+                    <div class="campo-dica">Será usado para entrar no sistema - sem espaços</div>
+                </div>
+
+            <!-- Senha -->
+            <label for="senha" class="rotulo">Senha</label>
+                <div class="campo-grupo">
+                    <input type="password" id="senha" name="senha" class="com-icone" placeholder="Mínimo 8 caracteres" minlength="8" required />
+                    <span class="material-symbols-outlined" id="alternar-senha" title="Mostrar senha">visibility</span>
+                </div>
+                <!-- barra indicadora de senha forte -->
+                 <div class="forca-senha" id="forca-senha">
+                    <div class="forca-barra" id="barra1"></div>
+                    <div class="forca-barra" id="barra2"></div>
+                    <div class="forca-barra" id="barra3"></div>
+                    <div class="forca-barra" id="barra4"></div>
+                 </div>
+                 <div class="forca-text" id="forca-text"></div>
+
+                 <!-- Confirmar senha -->
+                  <label for="confirmar-senha" class="rotulo" style="margin-top: 12px;">Confirmar senha</label>
+                  <div class="campo-grupo">
+                        <input type="password" id="confirmar-senha" name="confirmar-senha" class="com-icone" placeholder="Repita a senha" required>
+                        <span class="material-symbols-outlined" id="alternar-confirmar" title="Mostrar senha">visibility</span>
+                  </div>
+
+                  <!-- Botão de envio -->
+                   <button type="submit" class="botao-principal" id="botao-principal">Cadastrar</button>
+        </form>
+
+        <!-- link para voltar a página de login -->
+         <p class="link">
+            Já tem uma conta? <a href="sistema-vet-login.html">Fazer login</a>
+         </p>
+    </div>
+
+    <script>
+
+        // ============================
+        // 1.
+        // ============================
+
+        // ============================
+        // 2.
+        // ============================
+        
+    </script>
+</body>
+</html>
