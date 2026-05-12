@@ -454,6 +454,12 @@
         align-items: center;
     }
     /* -- desgin do formulario de solicitação -- */
+    .form-campos{
+        display: block;
+    }
+    .form-campos.oculto{
+        display: none;
+    }
     .form-card{
         background: var(--branco);
         border-radius: 24px;
@@ -478,10 +484,57 @@
         transition: border-color .2s;
         margin-bottom: 14px;
     }
-    .campo-form:focus{
+    .form-campo:focus{
         border-color: var(--azul-claro);
         box-shadow: 0 0 0 3px rgba(26, 111, 212, .1);
     }
+    .form-campo::placeholder{
+        color: var(--texto-fraco);
+    }
+
+    textarea.campo-form{
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .form-label{
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--texto-medio);
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+    }
+    .form-linha>div{
+        flex: 1;
+    }
+    /* Desing de quando você preenche o formulário */
+    .form-sucesso{
+        display: none;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .form-sucesso.visivel{
+        display: block;
+    }
+    .icon-check{
+        font-size: 56px;
+        margin-bottom: 16px;
+    }
+    .form-sucesso-titulo{
+        font-size: 22px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--azul);
+        margin-bottom: 8px;
+    }
+    .form-sucesso-desc{
+        font-size: 15px;
+        color: var(--texto-medio);
+        line-height: 1.6;
+    }
+
 
     /* DESIGN RODAPE */
     footer{
@@ -553,9 +606,9 @@
         <div class="nav-links" id="nav-links">
             <a href="#sobre">Quem Somos</a>
             <a href="#funcionalidades">Funcionalidades</a>
-            <a href="#diferencial">Diferenciais</a>
             <a href="#depoimentos">Depoimentos</a>
             <a href="#equipe">Equipe</a>
+            <a href="#diferencial">Diferenciais</a>
             <a href="#acesso">Solicitar Acesso</a>
             <a href="login.html" class="nav-cta">Já tenho acesso →</a>
         </div>
@@ -678,6 +731,47 @@
      </section>
 
 <!-- 
+     SEÇÃO | DIFERENCIAIS     
+--> 
+     <section class="Diferenciais">
+        <div class="diferenciais-campo">
+
+            <!-- CABEÇALHO DOS DIFERENCIAIS -->
+            <div class="diferenciais-header">
+                <span>Diferenciais</span>
+                <h2>Por que clínicas escolhem VetMedica?</h2>
+                <p>
+                    Cada detalhe foi contruído pensando na realidade do dia a dia do veterinário.
+                </p>
+            </div>
+
+            <!-- Tópicos do POR QUE? -->
+            <div class="diferenciais-porque">
+                <div class="diferenciais-card">
+                    <div class="diferenciais-num">01</div>
+                    <div class="diferenciais-titulo">Implementação Rápida</div>
+                    <div class="diferenciais-desc">Você preenche o formulário, nossa equipe configura e entra em contato e você recebe o acesso pronto para usar.</div>
+                </div>
+                <div class="diferenciais-card">
+                    <div class="diferenciais-num">02</div>
+                    <div class="diferenciais-titulo">Suporte humanos</div>
+                    <div class="diferenciais-desc">Nada de robôs. Você fala com pessoas reais que entendem o sistema e resolvem seus problemas rápido.</div>
+                </div>
+                <div class="diferenciais-card">
+                    <div class="diferenciais-num">03</div>
+                    <div class="diferenciais-titulo">100% web</div>
+                    <div class="diferenciais-desc">Funciona em computador, tablet ou celular. Basta um navegador com acesso a internet.</div>
+                </div>
+                <div class="diferenciais-card">
+                    <div class="diferenciais-num">04</div>
+                    <div class="diferenciais-titulo">Dados Seguros</div>
+                    <div class="diferenciais-desc">Cada clínica tem seu próprio banco de dados isolado. Seus dados nunca se misturam com os de outros clientes.</div>
+                </div>
+            </div>
+        </div>
+     </section>    
+
+<!-- 
      FORMULARIO DE SOLICITAÇÃO
 -->
      <section class="secao-formulario">
@@ -689,27 +783,27 @@
                 <h2 class="form-titulo">Pronto para transformar<br>sua clínica?</h2>
                 <p class="form-desc" style="margin-bottom: 24px;">Preencha o formulário ao lado cin is dados da sua clínica. Nossa equipe irá analisar, criar seu acesso e entrar em contato por WhatsApp com seu login e senha.</p>
                 <p class="form-desc"><strong>Como funciona:</strong></p>
-                <div class="form-check" style="margin-top: 16px;">
-                    <div class="form-icone">1</div>
-                    <div class="form-texto">Você preenche o formulário com os dados da clínica</div>
-                </div>
-                <div class="form-check">
-                    <div class="form-icone">2</div>
-                    <div class="form-texto">Nossa equipe recebe e configura o sistema pra você</div>
-                </div>
-                <div class="form-check">
-                    <div class="form-icone">3</div>
-                    <div class="form-texto">Você recebe o login WhatsApp e já pode usar</div>
-                </div>
+                    <div class="form-check" style="margin-top: 16px;">
+                        <div class="form-icone">1</div>
+                        <div class="form-texto">Você preenche o formulário com os dados da clínica</div>
+                    </div>
+                    <div class="form-check">
+                        <div class="form-icone">2</div>
+                        <div class="form-texto">Nossa equipe recebe e configura o sistema pra você</div>
+                    </div>
+                    <div class="form-check">
+                        <div class="form-icone">3</div>
+                        <div class="form-texto">Você recebe o login WhatsApp e já pode usar</div>
+                    </div>
             </div>
 
             <!-- FORMULARIO DA SOLICITAÇÃO -->
             <div>
                 <div class="form-card">
-                    <div>
-                        <h3>Solicitar Demostração</h3>
-                        <p>Todos os campos são obrigatórios</p>
-                        <form>
+                    <div class="form-campos" id="form-campos">
+                        <h3 style="color: var(--azul);font-size: 20px;font-weight: 700;margin-bottom: 4px;">Solicitar Demostração</h3>
+                        <p style="font-size: 14px;color: var(--texto-fraco);margin-bottom: 24px;">Todos os campos são obrigatórios</p>
+                        <form id="form-solicitacao"> <!-- PUXAR O ID NO BACKEND -->
                             <label class="form-label">Nome Completo</label>
                             <input class="form-campo" id="solicitacao-nome" placeholder="Seu nome" required />
 
