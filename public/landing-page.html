@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VetMedica — Sistema Completo para Clínicas Veterinárias</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" /> <!-- usada para adicionar as fontes de letras -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css">
     <style>
 
     *, *::before, *::after{
@@ -453,8 +453,34 @@
         display: flex;
         align-items: center;
     }
+    /* -- desgin do formulario de solicitação -- */
     .form-card{
         background: var(--branco);
+        border-radius: 24px;
+        padding: 40px;
+        border: 1px solid rgba(11, 61, 145, 0.06);
+        box-shadow: 0 16px 60px rgba(11, 61, 145, 0.06);
+    }
+    .form-card::before{
+        content: '';
+        display: block;
+    }
+    .form-campo{
+        width: 100%;
+        background: #f5f7fb;
+        border: 1px solid #dde3ef;
+        border-radius: 12px;
+        padding: 13px 18px;
+        font-size: 15px;
+        color: var(--texto);
+        font-family: inherit;
+        outline: none;
+        transition: border-color .2s;
+        margin-bottom: 14px;
+    }
+    .campo-form:focus{
+        border-color: var(--azul-claro);
+        box-shadow: 0 0 0 3px rgba(26, 111, 212, .1);
     }
 
     /* DESIGN RODAPE */
@@ -710,10 +736,19 @@
                             <label class="form-label">Mensagem (Opcional)</label>
                             <textarea class="form-campo" id="solicitacao-msg" placeholder="Conte um pouco sobre sua clínica ou dúvidas..."></textarea>
 
-                            <!-- BOTÃO DE "ENVIAR SOLICITAÇÃO" -->
-                            <button type="submit" class="botao-primario" style="width: 100%;justify-content: center; margin-top: 8px;padding: 15px;border-radius: 14px;">Enviar Solicitação →</button>
+                                <!-- BOTÃO DE "ENVIAR SOLICITAÇÃO" -->
+                                <button type="submit" class="botao-primario" style="width: 100%;justify-content: center; margin-top: 8px;padding: 15px;border-radius: 14px;">Enviar Solicitação →</button>
 
                         </form>
+                    </div>
+                    <div class="form-sucesso" id="form-sucesso">
+                        <div class="icon-check"></div>
+                        <div class="form-sucesso-titulo">Solicitação enviada!</div>
+                        <div class="form-sucesso-desc">
+                            Recebemos seus dados no nosso sistema. Nossa equipe vai entrar em contato pelo WhatsApp informado em até 24 horas com seu login e senha.
+                            <br> <br>
+                            Equanto isso, você pode conhecer mais sobre o sistema navegando pelo site.
+                        </div>
                     </div>
                 </div>
             </div>
