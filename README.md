@@ -24,8 +24,14 @@ Desenvolvido como projeto acadêmico por **Miller Alan**.
 - [Colocar online com ngrok]()
 - [Equipe]()
 
-## Página de Apresentacao
+---
 
-# Página de login
+## Sobre o projeto
 
-# Página de cadastro
+O VetMEdica nasceu de um problema real: da clínica veterinária que usam fichas de papel, agendas manuais e planilhas soltas para gerenciar pacientes, estoque e finanças. Esse sistema centraliza tudo em uma plataforma web acessível por qualquer navegador
+
+O foco foi contruir um sistma funcional em front-end, back-end e banco de dados integrados, onde todas as páginas se comunicam entre si e refletem entre si e refletem os dados em tempo real.
+
+## Funcionalidades
+
+**Painel administrativo (Dashboard)**
