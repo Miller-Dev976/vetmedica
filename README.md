@@ -39,5 +39,8 @@ O foco foi contruir um sistma funcional em front-end, back-end e banco de dados 
 - Contagem de consultas, vacinas e retornos do dia
 - Próximos atendimentos com status
 - Faturamento por forma de pagamento (Pix, dinheiro, cartão)
-- Aertas automáticos: estoque baixo, vacinas vencenndo, agendamentos pendentes
---
+- Alertas automáticos: estoque baixo, vacinas vencenndo, agendamentos pendentes
+- Resumo geral do sistema com links diretos para cada página
+
+**Tutores e Pacientes**
+- Cadastro de tutores(donos do pet) com nome, CPF, telefone, e-mail e endereço
