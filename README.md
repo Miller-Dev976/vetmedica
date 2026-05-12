@@ -38,5 +38,5 @@ O foco foi contruir um sistma funcional em front-end, back-end e banco de dados 
 - KPIs em tempo real: faturamento do dia, total de atendimento, tutores e pets cadastrados
 - Contagem de consultas, vacinas e retornos do dia
 - Próximos atendimentos com status
-- Faturamento por forma de pagamento (Pix, dinehir, cartão)
+- Faturamento por forma de pagamento (Pix, dinheiro, cartão)
 - Aertas automáticos: estoque baixo, vacinas vencenndo, agendamentos pendentes
