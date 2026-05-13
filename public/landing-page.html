@@ -31,7 +31,7 @@
     }
     
     html{
-        scroll-behavior: smooth;
+        scroll-behavior: smooth; /* para fazer a ancora de navegação */
     }
 
     body{
@@ -589,6 +589,10 @@
         text-transform: uppercase;
         letter-spacing: .5px;
     }
+    .form-linha{
+        display: flex;
+        gap: 14px;
+    }
     .form-linha>div{
         flex: 1;
     }
@@ -691,8 +695,8 @@
             <a href="#funcionalidades">Funcionalidades</a>
             <a href="#depoimentos">Depoimentos</a>
             <a href="#equipe">Equipe</a>
-            <a href="#diferencial">Diferenciais</a>
-            <a href="#acesso">Solicitar Acesso</a>
+            <a href="#diferenciais">Diferenciais</a>
+            <a href="#secao-formulario">Solicitar Acesso</a>
             <a href="login.html" class="nav-cta">Já tenho acesso →</a>
         </div>
 
@@ -816,7 +820,7 @@
 <!-- 
      SEÇÃO | DIFERENCIAIS     
 --> 
-     <section class="diferenciais">
+     <section class="diferenciais" id="diferenciais">
         <div class="diferenciais-campo">
 
             <!-- CABEÇALHO DOS DIFERENCIAIS -->
@@ -857,7 +861,7 @@
 <!-- 
      SEÇÃO | FORMULÁRIO DE SOLICITAÇÃO
 -->
-     <section class="secao-formulario">
+     <section class="secao-formulario" id="secao-formulario">
         <div class="form-secao">
 
             <!-- INFORMAÇÕES DA SOLICITAÇÃO -->

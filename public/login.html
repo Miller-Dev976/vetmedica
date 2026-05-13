@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coração de Pet - login</title>
+    <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css">
     <style>
 
         /* Remove margens e paddings padrão do navegador -> box-sizing: border box facilita o cálculo de larguras*/
@@ -46,6 +47,30 @@
                 radial-gradient(ellipse 60% 50% at 20% 40%, #1a6fd41a 0%, transparent 70%),
                 radial-gradient(ellipse 50% 40% at 80% 70%, #60b0ff12 0%, transparent 70%);
             pointer-events: none;
+        }
+        .voltar{
+            display: flex;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            align-items: center;
+            padding: 10px 20px;
+            background: var(--destaque);
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(64, 87, 218, 0.548);
+            transition: transform 0.2s;
+        }
+        .voltar:hover{
+            transform: translateY(-3px);
+            cursor: pointer;
+        }
+        .icon-move-left{
+            color: #ffffff;
+        } 
+        .voltar a{
+            text-decoration: none;
+            color: #ffffff;
+            margin-left: 5px;
         }
 
         /* design do container principal */
@@ -196,6 +221,13 @@
     </style>
 </head>
 <body>
+
+    <div class="voltar">
+        <div class="icon-move-left"></div>
+        <a href="landing-page.html">
+            <p>Voltar</p>
+        </a>
+    </div>
 
     <!-- CONTAINER PRINCIPAL DO LOGIN - Centralizado-->
     <div class="container">
