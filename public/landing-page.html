@@ -388,6 +388,52 @@
         margin-top: 2px;
     }
 
+    /* DESIGN | SEÇÃO DIFERENCIAIS */
+    .diferenciais{
+        padding: 100px 40px;
+        background: linear-gradient(135deg, var(--azul), #0045bb);
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+    }
+    .diferenciais::before{
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 40% 50% at 80% 20%, rgba(59, 142, 240, .15) 0%, transparent 70);
+        pointer-events: none;
+    }
+    .diferenciais-campo{
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    .diferenciais-header{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .diferenciais-title{
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 6px 20px;
+        color: var(--azul-brilho);
+        background: #326bcf62;
+        border-radius: 11px;
+        letter-spacing: 1.9px;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+    .diferenciais-subtitulo{
+        font-size: 44px;
+        color: var(--branco);
+        font-family: 'Libre Baskerville', sans-serif;
+        margin-bottom: 25px;
+
+    }
+
+
     /* DESIGN FORMULARIO DE SOLICITACAO */
     .secao-formulario{
         padding: 100px 40px;
@@ -733,14 +779,14 @@
 <!-- 
      SEÇÃO | DIFERENCIAIS     
 --> 
-     <section class="Diferenciais">
+     <section class="diferenciais">
         <div class="diferenciais-campo">
 
             <!-- CABEÇALHO DOS DIFERENCIAIS -->
             <div class="diferenciais-header">
-                <span>Diferenciais</span>
-                <h2>Por que clínicas escolhem VetMedica?</h2>
-                <p>
+                <span class="diferenciais-title">Diferenciais</span>
+                <h2 class="diferenciais-subtitulo">Por que clínicas escolhem VetMedica?</h2>
+                <p class="diferenciais-text">
                     Cada detalhe foi contruído pensando na realidade do dia a dia do veterinário.
                 </p>
             </div>
