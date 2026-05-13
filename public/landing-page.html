@@ -401,6 +401,138 @@
         position: relative;
         z-index: 2;
     }
+    .funcionalidades-header{
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .funcionalidades-header-titulo{
+        display: inline-block;
+        padding: 6px 16px;
+        background: var(--azul-suave);
+        color: var(--azul-brilho);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.9px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+    }
+    .funcionalidades-header-subtitulo{
+        font-size: 44px;
+        font-family: 'Libre Baskerville', sans-serif;
+        font-weight: 700;
+        color: var(--azul);
+        margin-bottom: 20px;
+        line-height: 1.25;
+    }
+    .funcionalidades-header-desc{
+        color: var(--texto-medio);
+        font-size: 17px;
+        max-width: 640px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .funcionalidades-informacoes{
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);
+        gap: 20px;
+    }
+    .funcionalidades-card{
+        padding: 40px 20px;
+        background: var(--branco);
+        border: 1px solid #f0f0f0;
+        border-radius: 10px;
+        box-shadow: 0 0 11px rgba(72, 79, 90, 0.151);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+    .funcionalidades-card:hover{
+        transform: translateY(-6px);
+        box-shadow: 0 9px 30px rgba(54, 57, 63, 0.336);
+    }
+/* DESIGN DAS CLASS DOS ICONES - lucide */
+    .icon-notepad-text{
+        width: 56px;
+        height: 56px;
+        font-size: 35px;
+        padding: 20px;
+        background: rgba(112, 153, 223, 0.226);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .icon-calendar{
+        width: 56px;
+        height: 56px;
+        font-size: 35px;
+        padding: 20px;
+        background: rgba(112, 153, 223, 0.226);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .icon-syringe{
+        width: 56px;
+        height: 56px;
+        font-size: 35px;
+        padding: 20px;
+        background: rgba(112, 153, 223, 0.226);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .icon-circle-dollar-sign{
+        width: 56px;
+        height: 56px;
+        font-size: 35px;
+        padding: 20px;
+        background: rgba(112, 153, 223, 0.226);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .icon-package{
+        width: 56px;
+        height: 56px;
+        font-size: 35px;
+        padding: 20px;
+        background: rgba(112, 153, 223, 0.226);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .icon-lock{
+        width: 56px;
+        height: 56px;
+        font-size: 35px;
+        padding: 20px;
+        background: rgba(112, 153, 223, 0.226);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .funcionalidades-titulo{
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 13px;
+    }
+    .funcionalidades-desc{
+
+    }
+
 
     /* DESIGN | SEÇÃO DIFERENCIAIS */
     .diferenciais{
@@ -838,55 +970,55 @@
         <div class="funcionalidades-campo">
 
             <!-- FUNCIONALIDADES - HEADERS -->
-            <div>
-                <span>Funcionalidades</span>
-                <h2>Tudo que sua clínica precisa, <br>em um só lugar</h2>
-                <p>
+            <div class="funcionalidades-header">
+                <span class="funcionalidades-header-titulo">Funcionalidades</span>
+                <h2 class="funcionalidades-header-subtitulo">Tudo que sua clínica precisa, <br>em um só lugar</h2>
+                <p class="funcionalidades-header-desc">
                     Do agendamento ao controle financeiro, cada módulo foi pensado para economizar tempo e eliminar o trabalho
                 </p>
             </div>
 
             <!-- FUNCIONALIDADES - CARDS DE INFORMAÇÕES -->
-            <div>
-                <div>
+            <div class="funcionalidades-informacoes">
+                <div class="funcionalidades-card">
                     <div class="icon-notepad-text"></div>
-                    <div>Prontuário Digital</div>
-                    <div>
-                        Histórico completo do paciente:<br>consultas, diagnósticos, exames e prescrições. Tudo organizado e acessível.
+                    <div class="funcionalidades-titulo">Prontuário Digital</div>
+                    <div class="funcionalidades-desc">
+                        Histórico completo do paciente: consultas, diagnósticos, exames e prescrições. Tudo organizado e acessível.
                     </div>
                 </div>
-                <div>
+                <div class="funcionalidades-card">
                     <div class="icon-calendar"></div>
-                    <div>Agenda Inteligente</div>
-                    <div>
+                    <div class="funcionalidades-titulo">Agenda Inteligente</div>
+                    <div class="funcionalidades-desc">
                         Calendário visual com visão por veterina´rio, confirmação de agendamento e encaixe de emergências em tempo real.
                     </div>
                 </div>
-                <div>
+                <div class="funcionalidades-card">
                     <div class="icon-syringe"></div>
-                    <div>Controle de Vacinas</div>
-                    <div>
+                    <div class="funcionalidades-titulo">Controle de Vacinas</div>
+                    <div class="funcionalidades-desc">
                         Alertas automáticos de vencimento, gestão de lotes e estoque integrado com o prontuário médico.
                     </div>
                 </div>
-                <div>
+                <div class="funcionalidades-card">
                     <div class="icon-circle-dollar-sign"></div>
-                    <div>Gestão Financeira</div>
-                    <div>
+                    <div class="funcionalidades-titulo">Gestão Financeira</div>
+                    <div class="funcionalidades-desc">
                         Faturamento automático ao concluir atendimento. Controle de entradas, saídas e formas de pagamento.
                     </div>
                 </div>
-                <div>
+                <div class="funcionalidades-card">
                     <div class="icon-package"></div>
-                    <div>Estoque Integrado</div>
-                    <div>
+                    <div class="funcionalidades-titulo">Estoque Integrado</div>
+                    <div class="funcionalidades-desc">
                         Cadastro de lotes, controle de validade, alertas de estoque baixo e baixa automática ao prescrever.
                     </div>
                 </div>
-                <div>
+                <div class="funcionalidades-card">
                     <div class="icon-lock"></div>
-                    <div>Controle de Acesso</div>
-                    <div>
+                    <div class="funcionalidades-titulo">Controle de Acesso</div>
+                    <div class="funcionalidades-desc">
                         3 Níveis de permissão: administrador, veterinário e recepcionista. Cada um vê só o que precisa.
                     </div>
                 </div>
