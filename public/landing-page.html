@@ -391,7 +391,7 @@
     /* DESIGN | SEÇÃO DIFERENCIAIS */
     .diferenciais{
         padding: 100px 40px;
-        background: linear-gradient(135deg, var(--azul), #0045bb);
+        background: linear-gradient(180deg, var(--azul) 0%, #072b66 100%);
         color: #fff;
         overflow: hidden;
         position: relative;
@@ -430,7 +430,44 @@
         color: var(--branco);
         font-family: 'Libre Baskerville', sans-serif;
         margin-bottom: 25px;
-
+    }
+    .diferenciais-text{
+        color: #e2e2e2;
+        letter-spacing: 0.5px;
+    }
+    .diferenciais-porque{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .diferenciais-card{
+        padding: 45px 37px;
+        border: 1px solid rgb(255, 255, 255, .08);
+        border-radius: 20px;
+        background: rgba(255,255,255, .06);
+        backdrop-filter: blur(8px);
+        transition: transform 0.2s, background 0.2s
+    }
+    .diferenciais-card:hover{
+        background: rgba(255, 255, 255, .1);
+        transform: translateY(-3px);
+    }
+    .diferenciais-num{
+        font-size: 50px;
+        font-weight: 900;
+        color: rgba(59, 142, 240, .25);
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+    .diferenciais-titulo{
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .diferenciais-desc{
+        font-size: 15px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, .65)
     }
 
 
