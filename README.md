@@ -1,4 +1,4 @@
-# VetMedica - Sistema de Gestão para Clínicas Veterinárias
+# VetMedica - Sistema de Gestão para Clínicas Veterinárias(Projeto Acadêmico)
 
 Sistema web completo para gerenciar o dia a dia de uma clínica veterinária: tutores, pets,a genda, prontuário médico, estoque, financeiro e controle de acesso por cargo.
 
