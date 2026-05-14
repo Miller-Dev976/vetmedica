@@ -3,9 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VetMedica - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+
+    :root {
+      --fundo-pagina: #f0f4f9;
+      --branco: #fff;
+      --azul-escuro: #0a2a52;
+      --azul-medio: #0f3d76;
+      --azul-principal: #1a6fd4;
+      --azul-claro: #3b8ef0;
+      --azul-suave: #60b0ff;
+      --azul-fundo: #eef5ff;
+      --texto-forte: #0f2b4d;
+      --texto-medio: #5a6a82;
+      --texto-fraco: #7b8ba5;
+      --texto-sutil: #9aa8bc;
+      --borda: #e0e6ef;
+      --borda-cartao: #e8edf4;
+      --fundo-input: #f7f9fc;
+      --verde: #22a869;
+      --verde-fundo: #eafaf1;
+      --vermelho: #e05252;
+      --vermelho-fundo: #fdf0f0;
+      --amarelo: #e8a020;
+      --amarelo-fundo: #fef8ec;
+      --roxo: #7c4dff;
+      --roxo-fundo: #f0e6ff;
+      --sombra-cartao: 0 2px 12px rgba(10, 42, 82, 0.04);
+      --menu-aberto: 260px;
+      --menu-fechado: 76px;
+    }
+    body{
+        font-family: 'DM Sans', sans-serif;
+        background: var(--fundo-pagina);
+    }
+
+    /* DESIGN | MENU LATERAL */
+    .menu-lateral{
+        position: fixed;
+        background: linear-gradient(180deg, var(--azul-escuro), var(--azul-medio));
+        width: var(--menu-aberto);
+        left: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        z-index: 100;
+        overflow: hidden;
+    }
+    .menu-topo{
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        min-height: 80px;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+
+    </style>
 </head>
 <body>
     
+    <aside class="menu-lateral">
+
+        <!-- MENU DO TOPO | IMAGEM E TITULO -->
+        <div class="menu-topo">
+
+            <!-- ICONE -->
+             <div>
+                <img src="img/logo.png" alt="VetMedica" width="44px">
+                <div>
+                    <span></span><span></span><span></span>
+                </div>
+             </div>
+
+             <!-- NOME DA EMPRESA -->
+            <div>
+                <div>VetMedica</div>
+                <div>Painel Administrativo</div>
+            </div>
+        </div>
+
+        <!-- MENU DO MEIO | LISTA DAS PÁGINAS -->
+         <nav class="paginas">
+            <a class="menu-pagina" href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a class="menu-pagina" href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Tutores e Pacientes</span>
+            </a>
+            <a class="menu-pagina" href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Agendamento</span>
+            </a>
+            <a class="menu-pagina" href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Prontuário</span>
+            </a>
+            <a class="menu-pagina" href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Estoque</span>
+            </a>
+            <a class="menu-pagina" href="dashboard.html">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Usuário</span>
+            </a>
+         </nav>
+
+         <!-- MENU BAIXO | BOTÃO DE SAIR -->
+          <div>
+            <a class="menu-pagina" href="">
+                <i data-lucide="log-out"></i>
+                <span>Sair</span>
+            </a>
+          </div>
+    </aside>
+
+        
+
+    <script>
+
+        lucide.createIcons();
+
+    </script>
 </body>
 </html>
