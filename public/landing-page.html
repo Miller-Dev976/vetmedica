@@ -388,6 +388,7 @@
         margin-top: 2px;
     }
 
+
     /* DESING | SEÇÃO FUNCIONALIDADES */
     .funcionalidades{
         padding: 100px 40px;
@@ -526,12 +527,134 @@
     }
     .funcionalidades-titulo{
         font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 13px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--texto);
     }
     .funcionalidades-desc{
+        font-size: 15px;
+        color: var(--texto-medio);
+    }
+
+    
+    /* DESIGN | SEÇÃO DEPOIMENTOS */
+    .depoimentos{
+        padding: 100px 40px;
+        overflow: hidden;
+        position: relative;
+    }
+    .depoimentos-campo{
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .depoimentos-header{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .depoimentos-titulo{
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 6px 20px;
+        color: var(--azul-brilho);
+        background: var(--azul-suave);
+        border-radius: 9px;
+        letter-spacing: 1.9px;
+        margin-bottom: 20px;
+        display: inline-block;
+    }
+    .depoimentos-subtitulo{
+        font-size: 44px;
+        font-family: 'Libre Baskerville', sans-serif;
+        color: var(--azul);
+        margin-bottom: 25px;
+    }
+    .depoimentos-desc{
+        color: var(--texto-medio);
+        font-size: 16px;
+    }
+    .depoimentos-clientes{
+        display: flex;
+        gap: 20px;
+    }
+    .depoimentos-card{
+        background: hsla(227, 54%, 93%, 0.315);
+        padding: 45px 25px;
+        border: 1px solid #c4c4c438;
+        border-radius: 15px;
+        box-shadow: 5px 5px 8px rgba(11, 60, 145, 0.164);
+        transition: transform .2s, box-shadow .2s;
 
     }
+    .depoimentos-card:hover{
+        transform: translateY(-3px);
+        box-shadow: 8px 8px 12px rgba(11, 60, 145, 0.164);
+    }
+    .icon-estrela{
+        display: flex;
+        color: #ffd900;
+        margin-bottom: 18px;
+    }
+    .depoimentos-comentario{
+        font-size: 15px;
+        color: var(--texto-medio);
+        line-height: 23px;
+        margin-bottom: 19px;
+    }
+    .depoimentos-perfil{
+        display: flex;
+        align-items: center;
+    }
+    .depoimentos-perfil-foto-1{
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #028b5e, #02c483);
+        border-radius: 12px;
+        font-size: 20px;
+        font-weight: 800;
+        color: #fff;
+        margin-right: 18px;
+        box-shadow: 0 0 10px rgba(40, 139, 20, 0.527);
+    }
+    .depoimentos-perfil-foto-2{
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0b3d91, #1a6fd4);
+        border-radius: 12px;
+        font-size: 20px;
+        font-weight: 800;
+        color: #fff;
+        margin-right: 18px;
+        box-shadow: 0 0 10px rgba(39, 102, 240, 0.527);
+    }
+    .depoimentos-perfil-foto-3{
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #d8bd25, #ffd900);
+        border-radius: 12px;
+        font-size: 20px;
+        font-weight: 800;
+        color: #fff;
+        margin-right: 18px;
+        box-shadow: 0 0 10px rgba(218, 205, 27, 0.527);
+    }
+    .depoimentos-perfil-nome{
+        font-size: 13px;
+        color: var(--texto-medio);
+        letter-spacing: 0.9px;
+        line-height: 19px;
+    }
+
 
 
     /* DESIGN | SEÇÃO DIFERENCIAIS */
@@ -991,7 +1114,7 @@
                     <div class="icon-calendar"></div>
                     <div class="funcionalidades-titulo">Agenda Inteligente</div>
                     <div class="funcionalidades-desc">
-                        Calendário visual com visão por veterina´rio, confirmação de agendamento e encaixe de emergências em tempo real.
+                        Calendário visual com visão por veterinário, confirmação de agendamento e encaixe de emergências em tempo real.
                     </div>
                 </div>
                 <div class="funcionalidades-card">
@@ -1025,6 +1148,90 @@
             </div>
         </div>
     </section>
+
+<!--
+     SEÇÃO | DEPOIMENTOS
+-->
+     <section class="depoimentos">
+        <div class="depoimentos-campo">
+
+            <!-- DEPOIMENTOS - HEADER -->
+            <div class="depoimentos-header">
+                <span class="depoimentos-titulo">Depoimentos</span>
+                <h2 class="depoimentos-subtitulo">O que nossos clientes dizem</h2>
+                <p class="depoimentos-desc">
+                    Clínicas de todo o Brasil já transformaram sua rotina com o VetMedica.
+                </p>
+            </div>
+
+            <!-- DEPOIMENTOS - CLINTES FICTICIOS -->
+             <div class="depoimentos-clientes">
+                <div class="depoimentos-card">
+                    <div class="icon-estrela">
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                    </div>
+                    <div class="depoimentos-comentario">
+                        <i>
+                            "Antes perdíamos 2 horas por dia só organizando fichas. Com a VetMedica, tudo ficou digital e a gente ganha tempo para o que importa: cuidar dos bichinhos."
+                        </i>
+                    </div>
+                    <div class="depoimentos-perfil">
+                        <div class="depoimentos-perfil-foto-1">CM</div>
+                        <div class="depoimentos-perfil-nome"><strong style="font-size: 17px;color:#000000;letter-spacing:0px;">Dra.Camila Martins</strong><br>Clínica PetVida - São Paulo</div>
+                    </div>
+                </div>
+                <div class="depoimentos-card">
+                    <div class="icon-estrela">
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                    </div>
+                    <div class="depoimentos-comentario">
+                        <i>
+                            "O portal do tutor foi um divisor de águas. Nossos clientes adoram poder agendar online e ver a carteirinha de vacinação pelo celular."
+                        </i>
+                    </div>
+                    <div class="depoimentos-perfil">
+                        <div class="depoimentos-perfil-foto-2">RF</div>
+                        <div class="depoimentos-perfil-nome"><strong style="font-size: 17px;color:#000000;letter-spacing:0px;">Dr.Rafael Ferreira</strong><br>VetCare - Belo Horizonte</div>
+                    </div>
+                </div>
+                <div class="depoimentos-card">
+                    <div class="icon-estrela">
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                        <div class="icon-star"></div>
+                    </div>
+                    <div class="depoimentos-comentario">
+                        <i>
+                            "A implantação foi tão rápida que na segunda-feira fechamos o contrato e na quarta já estava tudo rodando. O suporte é excepcional."
+                        </i>
+                    </div>
+                    <div class="depoimentos-perfil">
+                        <div class="depoimentos-perfil-foto-3">CM</div>
+                        <div class="depoimentos-perfil-nome"><strong style="font-size: 17px;color:#000000;letter-spacing:0px;">Ana Souza</strong><br>Gerente - Bicho Feliz - Curitiba</div>
+                    </div>
+                </div>
+             </div>
+        </div>
+     </section>
+
+
+<!--
+     SEÇÃO | EQUIPE    
+-->
+     <section>
+
+     </section>
+
 
 <!-- 
      SEÇÃO | DIFERENCIAIS     
