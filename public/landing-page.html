@@ -23,7 +23,7 @@
       --creme:      #fafbfe;
       --texto:      #1a2234;
       --texto-medio:#4a5568;
-      --texto-fraco: #7b8ba5;
+      --texto-fraco:#7b8ba5;
       --verde:      #10b981;
       --verde-fundo:#ecfdf5;
       --laranja:    #f59e0b;
@@ -254,6 +254,44 @@
         border-color: 2px solid rgba(11, 61, 145, 0.12);
         background: var(--azul-suave);
     }
+    /* PAINEL APRESENTAÇÃO */
+    .painel{
+        border-radius: 20px;
+        background: var(--branco);
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(11, 61, 145, .15);
+    }
+    .painel-campo{
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #0a2a52 0%, #0f3d76 50px, #f0f4f9 50px);
+    }
+    .painel-barra{
+        height: 50px;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .painel-barra-cores{
+        background: #028b5e;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .painel-corpo{
+        display: grid;
+        padding: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .painel-card{
+        padding: 50px;
+        border: 1px solid #e2e2e298;
+        background: #fff;
+        border-radius: 8px;
+    }
 
     /* DESIGN SECAO NUMEROS E RESULTADOS */
     .secao-numeros{
@@ -443,14 +481,14 @@
         background: var(--branco);
         border: 1px solid #f0f0f0;
         border-radius: 10px;
-        box-shadow: 0 0 11px rgba(72, 79, 90, 0.151);
+        box-shadow: 0 15px 30px rgba(11, 61, 145, .15);
         transition: transform 0.3s, box-shadow 0.3s;
         position: relative;
         overflow: hidden;
     }
     .funcionalidades-card:hover{
         transform: translateY(-6px);
-        box-shadow: 0 9px 30px rgba(54, 57, 63, 0.336);
+        box-shadow: 0 9px 30px rgba(11, 60, 145, 0.356);
     }
 /* DESIGN DAS CLASS DOS ICONES - lucide */
     .icon-notepad-text{
@@ -949,9 +987,11 @@
         </button>
     </nav>
 
-    <!-- Apresentação -->
+    <!-- SEÇÃO | APRESENTAÇÃO -->
      <section class="apre">
         <div class="apre-conteudo">
+            
+            <!-- TITULO DO E APRESENTAÇÃO -->
             <div>
                 <div class="apre-ponto">
                     <div class="ponto-verde"></div> <!-- Quero que tenha um ponto bilhando para que de a entender que estamos ONLINE -->
@@ -962,15 +1002,39 @@
                         Prontuário digital, agenda inteligente, controle de vacinas e portal do tutor — tudo em uma única plataforma feita por quem entende a rotina veterinária.
                     </p>
                 <div class="botoes">
-                    <a href="#contato" class="botao-primario">Solicitar demostração  gratuita →</a>
+                    <a href="#secao-formulario" class="botao-primario">Solicitar demostração  gratuita →</a>
                     <a href="#funcionalidades" class="botao-secundario">Ver funcionalidades</a>
                 </div>
             </div>
+
+             <!-- AMOSTRA DO PAINEL ADMINISTRATIVO -->
+             <div class="painel">
+                <div class="painel-campo">
+
+                    <!-- painel header -->
+                    <div class="painel-barra">
+                        <div class="painel-barra-cores"></div>
+                        <div class="painel-barra-cores"></div>
+                        <div class="painel-barra-cores"></div>
+                    </div>
+
+                    <!-- conteúdo do painel -->
+                    <div class="painel-corpo">
+                        <div class="painel-card">
+                            <div class="painel-card-faturamento"></div>
+                            <div class="painel-card-valor"></div>
+                            <div class="painer-card-barra"></div>
+                        </div>
+                        <div class="painel-card">
+                            <div class="painel-card-faturamento"></div>
+                            <div class="painel-card-valor"></div>
+                            <div class="painer-card-barra"></div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
         </div>
-
-        <!-- PAINEL ADMINISTRATIVO -->
-
-
      </section>
 
 <!-- 
@@ -1192,9 +1256,8 @@
      SEÇÃO | EQUIPE    
 -->
      <section>
-
+        
      </section>
-
 
 <!-- 
      SEÇÃO | DIFERENCIAIS     
@@ -1340,6 +1403,7 @@
 <script>
 
     lucide.createIcons();
+
 
 
 </script>
