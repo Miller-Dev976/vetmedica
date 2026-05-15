@@ -6,6 +6,7 @@
     <title>VetMedica — Sistema Completo para Clínicas Veterinárias</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" /> <!-- usada para adicionar as fontes de letras -->
     <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
 
     *, *::before, *::after{
@@ -263,35 +264,62 @@
         box-shadow: 0 20px 60px rgba(11, 61, 145, .15);
     }
     .painel-campo{
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, #0a2a52 0%, #0f3d76 50px, #f0f4f9 50px);
+        position: relative;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 138px;
+        height: 427px;
+        background: linear-gradient(180deg, var(--azul) 0%, var(--azul-claro) 100%);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
     }
-    .painel-barra{
-        height: 50px;
-        padding: 0 20px;
+    .painel-topo{
         display: flex;
         align-items: center;
-        gap: 10px;
-    }
-    .painel-barra-cores{
-        background: #028b5e;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-    }
-    .painel-corpo{
-        display: grid;
-        padding: 20px;
-        grid-template-columns: 1fr 1fr;
+        padding: 6px 8px;
         gap: 12px;
     }
-    .painel-card{
-        padding: 50px;
-        border: 1px solid #e2e2e298;
-        background: #fff;
-        border-radius: 8px;
+    .painel-icone{
+        width: 29px;
+        height: 29px;
+        background: linear-gradient(135deg, #1a6fd4, #3b8ef0);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(59, 142, 240, .35);
+        position: relative;
     }
+    .painel-texto{
+        flex: 1;
+        white-space: nowrap;
+    }
+    .painel-titulo{
+        font-size: 11px;
+        color: #ffffff;
+        font-weight: 700;
+    }
+    .painel-subtitulo{
+        font-size: 8px;
+        color: #7baed4;
+        font-weight: 600;
+    }
+    .painel-nav{
+        flex: 1;
+        padding: 6px 8px;
+    }
+    .painel-paginas{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 5px;
+        color: #7baed4;
+        font-size: 9px;
+        font-weight: 600;
+    }
+    
 
     /* DESIGN SECAO NUMEROS E RESULTADOS */
     .secao-numeros{
@@ -377,7 +405,6 @@
     .grid-imagem{
         position: relative;
         border-radius: 24px;
-        overflow: hidden;
         aspect-ratio: 4/3;
         background: linear-gradient(135deg, var(--azul-suave), #dbeafe);
         display: flex;
@@ -392,36 +419,36 @@
         position: absolute;
         background: var(--branco);
         border-radius: 16px;
-        padding: 18px 22px;
+        padding: 23px 42px;
         box-shadow: 0 12px 40px rgba(11,61,145,0.12);
         display: flex;
         align-items: center;
         gap: 14px;
     }
-    .grid-card.topo{
-        top: 24px;
-        right: 24px;
+    .topo{
+        top: -30px;
+        right: -30px;
     }
-    .grid-card.baixo{
-        bottom: 24px;
-        left: 24px;
+    .baixo{
+        bottom: -30px;
+        left: -30px;
     }
     .icone-grid{
-        width: 44px;
-        height: 44px;
+        width: 50px;
+        height: 50px;
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
+        font-size: 25px;
     }
     .grid-texto{
-        font-size: 13px;
+        font-size: 15px;
         font-weight: 600;
         color: var(--texto);
     }
     .grid-subtexto{
-        font-size: 12px;
+        font-size: 13px;
         color: var(--texto-fraco);
         margin-top: 2px;
     }
@@ -430,7 +457,7 @@
     /* DESING | SEÇÃO FUNCIONALIDADES */
     .funcionalidades{
         padding: 100px 40px;
-        background: rgba(88, 146, 247, 0.068);
+        background: var(--creme);
         overflow: hidden;
         position: relative;
     }
@@ -668,6 +695,97 @@
         flex-direction: column;
     }
 }
+
+
+    /* DESIGN | SEÇÃO EQUIPE */
+    .equipe{
+        padding: 100px 40px;
+        background: var(--creme);
+    }
+    .equipe-campo{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .equipe-header{
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .equipe-titulo{
+        display: inline-block;
+        padding: 6px 16px;
+        background: var(--azul-suave);
+        color: var(--azul-brilho);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.9px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+    }
+    .equipe-subtitulo{
+        font-size: 44px;
+        font-family: 'Libre Baskerville', sans-serif;
+        font-weight: 700;
+        color: var(--azul);
+        margin-bottom: 20px;
+        line-height: 1.25;
+    }
+    .equipe-desc{
+        color: var(--texto-medio);
+        font-size: 17px;
+        max-width: 640px;
+        margin: 0 auto;
+        line-height: 1.8;
+        margin: 0 auto;
+    }
+    .equipe-grid{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px;
+    }
+    .equipe-membros{
+        text-align: center;
+        background: var(--branco);
+        border-radius: 15px;
+        box-shadow: 0 0 13px 3px rgba(30, 31, 32, 0.164);
+        padding: 36px 24px;
+        transition: transform .3s, box-shadow .3s;
+    }
+    .equipe-membros:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 0 15px 5px rgba(30, 31, 32, 0.205);
+    }
+    .membros-sigla{
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        margin: 0 auto;
+        border-radius: 10px;
+        font-size: 28px;
+        font-weight: 800;
+    }
+    .membros-nome{
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--texto);
+        margin-bottom: 4px;
+    }
+    .membros-cargo{
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--azul-brilho);
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .membros-desc{
+        font-size: 13px;
+        color: var(--texto-medio);
+        line-height: 1.6;
+    }
 
 
     /* DESIGN | SEÇÃO DIFERENCIAIS */
@@ -1012,25 +1130,51 @@
                 <div class="painel-campo">
 
                     <!-- painel header -->
-                    <div class="painel-barra">
-                        <div class="painel-barra-cores"></div>
-                        <div class="painel-barra-cores"></div>
-                        <div class="painel-barra-cores"></div>
+                    <div class="painel-topo">
+
+                        <div class="painel-icone">
+                            <img src="img/logo.png" alt="Vetmedica" width="25px">
+                        </div>
+                        <div class="painel-texto">
+                            <div class="painel-titulo">VetMedica</div>
+                            <div class="painel-subtitulo">Painel Administrativo</div>
+                        </div>
                     </div>
 
-                    <!-- conteúdo do painel -->
-                    <div class="painel-corpo">
-                        <div class="painel-card">
-                            <div class="painel-card-faturamento"></div>
-                            <div class="painel-card-valor"></div>
-                            <div class="painer-card-barra"></div>
+                    <!-- painel paginas demostração -->
+                    <div class="painel-nav">
+                        <div class="painel-paginas">
+                            <i data-lucide="layout-dashboard"></i>
+                            <span>Dashboard</span>
                         </div>
-                        <div class="painel-card">
-                            <div class="painel-card-faturamento"></div>
-                            <div class="painel-card-valor"></div>
-                            <div class="painer-card-barra"></div>
+                        <div class="painel-paginas">
+                            <i data-lucide="users"></i>
+                            <span>Tutores e Pacientes</span>
                         </div>
+                        <div class="painel-paginas">
+                            <i data-lucide="calendar-days"></i>
+                            <span>Agenda</span>
+                        </div>
+                        <div class="painel-paginas">
+                            <i data-lucide="book-open"></i>
+                            <span>Prontuário</span>
+                        </div>
+                        <div class="painel-paginas">
+                            <i data-lucide="package"></i>
+                            <span>Estoque</span>
+                        </div>
+                        <div class="painel-paginas">
+                            <i data-lucide="user-cog"></i>
+                            <span>Usuários</span>
+                        </div>
+                        
+                        
                     </div>
+                </div>
+
+                <!-- conteudo d -->
+                <div>
+
                 </div>
              </div>
 
@@ -1081,14 +1225,13 @@
             <div class="grid">
                 <div class="grid-imagem">
                     <div class="grid-icone-grande">🐾</div>
-
-                    <div class="grid-card topo">
-                        <div class="icone-grid" style="background: #ecfdf5;">🩺</div>
-                            <div>
-                                <div class="grid-texto">Prontuário digital</div>
-                                <div class="grid-subtexto">Acesso em qualquer lugar</div>
-                            </div>
-                    </div>
+                        <div class="grid-card topo">
+                            <div class="icone-grid" style="background: #ecfdf5;">🩺</div>
+                                <div>
+                                    <div class="grid-texto">Prontuário digital</div>
+                                    <div class="grid-subtexto">Acesso em qualquer lugar</div>
+                                </div>
+                        </div>
 
                     <div class="grid-card baixo">
                         <div class="icone-grid" style="background: #fef8ec;">📊</div>
@@ -1255,8 +1398,53 @@
 <!--
      SEÇÃO | EQUIPE    
 -->
-     <section>
-        
+     <section class="equipe" id="equipe">
+        <div class="equipe-campo">
+
+            <!-- equipe header -->
+             <div class="equipe-header">
+                <span class="equipe-titulo">Nossa Equipe</span>
+                <h2 class="equipe-subtitulo">As mentes por trás do VetMedica</h2>
+                <p class="equipe-desc">
+                    Um time comprometido em entregar a melhor experiência para clínicas veterinárias de todo o Brasil.
+                </p>
+             </div>
+
+             <!-- integrantes do projeto -->
+             <div class="equipe-grid">
+                <div class="equipe-membros">
+                    <div class="membros-sigla" style="background: linear-gradient(135deg,#ffe600,#e2b900);">FS</div>
+                    <div class="membros-nome">Felipe dos Santos</div>
+                    <div class="membros-cargo">Suporte & QA</div>
+                    <div class="membros-desc">Responsável por garantir que tudo funcione perfeitamente. Testes, suporte ao cliente e documentação.</div>
+                </div>
+                <div class="equipe-membros">
+                    <div class="membros-sigla" style="background: linear-gradient(135deg,#028f15,#16b900);">MA</div>
+                    <div class="membros-nome">Miller Alan</div>
+                    <div class="membros-cargo">Full Stack Developer</div>
+                    <div class="membros-desc">Arquiteto do sistema. Construiu o front-end, o back-end e a integração entre todas as páginas.</div>
+                </div>
+                <div class="equipe-membros">
+                    <div class="membros-sigla" style="background:linear-gradient(135deg,#1a6fd4,#3b8ef0)">K</div>
+                    <div class="membros-nome">Kamilly</div>
+                    <div class="membros-cargo">Back-end & Database</div>
+                    <div class="membros-desc">Responsável pela estrutura do banco de dados, rotas do servidor e segurança dos dados.</div>
+                </div>
+                <div class="equipe-membros">
+                    <div class="membros-sigla" style="background: linear-gradient(135deg,#ec1a1a,#8b0000);">H</div>
+                    <div class="membros-nome">Hiago</div>
+                    <div class="membros-cargo">Front-end Developer</div>
+                    <div class="membros-desc">Criou as interfaces visuais do sistema. Design, responsividade e interações do usuário.</div>
+                </div>
+                <div class="equipe-membros">
+                    <div class="membros-sigla" style="background: linear-gradient(135deg,#02718d,#05b5e0);">D</div>
+                    <div class="membros-nome">Davi</div>
+                    <div class="membros-cargo">Full Stack Developer</div>
+                    <div class="membros-desc">Desenvolveu interfaces e funcionalidades do back-end. Foco em performance eexperiência do usuário.</div>
+                </div>
+             </div>
+
+        </div>         
      </section>
 
 <!-- 
@@ -1404,6 +1592,30 @@
 
     lucide.createIcons();
 
+            // Envio do formulário
+        document.getElementById('form-solicitacao').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var dados = {
+                nome: document.getElementById('sol-nome').value,
+                clinica: document.getElementById('sol-clinica').value,
+                whatsapp: document.getElementById('sol-whatsapp').value,
+                email: document.getElementById('sol-email').value,
+                cidade: document.getElementById('sol-cidade').value,
+                qtd_veterinarios: document.getElementById('sol-vets').value,
+                mensagem: document.getElementById('sol-msg').value
+            };
+
+            // Envia para o backend
+            fetch('/api/solicitacoes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            }).catch(function () { });
+
+            // Mostra mensagem de sucesso
+            document.getElementById('form-campos').classList.add('oculto');
+            document.getElementById('form-sucesso').classList.add('visivel');
+        });
 
 
 </script>
