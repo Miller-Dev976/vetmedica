@@ -318,6 +318,11 @@
         font-size: 9px;
         font-weight: 600;
     }
+    .painel-demonstracao{
+        margin-left: 260px;
+        padding: 28px;
+        
+    }
     
 
     /* DESIGN SECAO NUMEROS E RESULTADOS */
@@ -362,7 +367,7 @@
     }
 
     /* DESIGN SEÇÃO "QUEM SOMOS" */
-    .secao{
+    .secao-quemsomos{
         padding: 100px 40px;
         max-width: 1200px;
         margin: 0 auto;
@@ -387,42 +392,55 @@
         line-height: 1.25;
         margin-bottom: 20px;
     }
-    .secao-desc{
+    .quesomos-desc{
         font-size: 17px;
         line-height: 1.8;
         color: var(--texto-medio);
         max-width: 640px;
+        margin-bottom: 25px;
     }
-    /* design das informações da class='grid' */
-    .grid{
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* cria um layout de duas colunas com larguras iguais */
-        gap: 60px;
+        .quem-somos-check{
+        display: flex;
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+    .quem-somos-icones{
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: var(--verde-fundo);
+        font-size: 14px;
+        display: flex;
         align-items: center;
-        margin-top: 48px;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--verde);
+        font-weight: 700;
+        margin-top: 2px;
     }
-    .grid-imagem{
+    .quem-somos-texto{
+        font-size: 15px;
+        line-height: 1.5;
+        color: var(--texto-medio);
+    }
+    .quem-somos-pet{
         position: relative;
         border-radius: 24px;
         aspect-ratio: 4/3;
         background: linear-gradient(135deg, var(--azul-suave), #dbeafe);
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
     }
-    .grid-icone-grande{
-        font-size: 120px;
-        opacity: 0.3;
-    }
-    .grid-card{
+    .quem-somos-card{
         position: absolute;
         background: var(--branco);
         border-radius: 16px;
         padding: 23px 42px;
-        box-shadow: 0 12px 40px rgba(11,61,145,0.12);
+        gap: 14px;
+        box-shadow: 0 12px 40px rgba(11, 61, 145, 0.12);
         display: flex;
         align-items: center;
-        gap: 14px;
     }
     .topo{
         top: -30px;
@@ -432,7 +450,7 @@
         bottom: -30px;
         left: -30px;
     }
-    .icone-grid{
+    .icon-stethoscope{
         width: 50px;
         height: 50px;
         border-radius: 12px;
@@ -440,7 +458,29 @@
         align-items: center;
         justify-content: center;
         font-size: 25px;
+        background: #9ac3f885;
     }
+    .icon-chart-column-increasing{
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        background: #9ac3f885;
+    }
+    .quem-somos-info{
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--texto);
+    }
+    .quem-somo-desc{
+        font-size: 13px;
+        color: var(--texto-fraco);
+        margin-top: 2px;
+    }
+/*  
     .grid-texto{
         font-size: 15px;
         font-weight: 600;
@@ -451,6 +491,7 @@
         color: var(--texto-fraco);
         margin-top: 2px;
     }
+*/
 
 
     /* DESING | SEÇÃO FUNCIONALIDADES */
@@ -765,18 +806,19 @@
         border-radius: 10px;
         font-size: 28px;
         font-weight: 800;
+        margin-bottom: 4px;
     }
     .membros-nome{
         font-size: 16px;
         font-weight: 600;
         color: var(--texto);
-        margin-bottom: 4px;
+        margin-bottom: 6px;
     }
     .membros-cargo{
         font-size: 12px;
         font-weight: 600;
         color: var(--azul-brilho);
-        margin-bottom: 5px;
+        margin-bottom: 6px;
         letter-spacing: 1px;
         text-transform: uppercase;
     }
@@ -1171,9 +1213,32 @@
                     </div>
                 </div>
 
-                <!-- conteudo d -->
-                <div>
+                <!-- conteudo da demonstração -->
+                <div class="painel-demonstracao">
 
+                    <!-- cabeçalho -->
+                    <div class="painel-cabecalho">
+                        <div style="display: flex;align-items: center;gap: 12px;">
+                            <div>
+                                <h1>Dashboard</h1>
+                                <p>segunda-feira, 18 de maio de 2026</p>
+                            </div>
+                        </div>
+                        <div class="demosntracao-perfil">
+                            <div class="demonstracao-avatar">AD</div>
+                            <div>
+                                <div class="demosntracao-nome">Admin</div>
+                                <div class="demosntracao-cargo">Administrador</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- exemplho da demonstração -->
+                    <div>
+                        <div>
+                            <div></div>
+                        </div>
+                    </div>
                 </div>
              </div>
 
@@ -1213,58 +1278,58 @@
 <!--
      SEÇÃO | QUEM SOMOS 
 -->
-     <section class="secao" id="quem-somos">
+     <section class="secao-quemsomos" id="quem-somos">
             <span class="secao-qs">Quem somos</span>
-            <h2 class="secao-titulo">Tecnologia feita por quem vive a rotina veterinária</h2>
-            <p class="secao-desc">
-                Nascemos da frustação real das clínicas veterinárias que perdiam tempo com planilhas, agenda de papel e fichas soltas. Pensando nisso,criamos a VetMedica para te ajudar com a solução prática.
-            </p>
+            <h2 class="secao-titulo">Tecnologia feita por quem vive<br> a rotina veterinária</h2>
 
-            <!-- layout do prontuário -->
-            <div class="grid">
-                <div class="grid-imagem">
-                    <div class="grid-icone-grande">🐾</div>
-                        <div class="grid-card topo">
-                            <div class="icone-grid" style="background: #ecfdf5;">🩺</div>
-                                <div>
-                                    <div class="grid-texto">Prontuário digital</div>
-                                    <div class="grid-subtexto">Acesso em qualquer lugar</div>
-                                </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px;align-items:center">
+                
+                <!-- INFORMAÇÃO COLUNA 1 -->
+                <div>
+                    <p class="quesomos-desc">
+                        Somos uma equipe de desenvolvedores e apaixonados pelo
+                        universo pet, unidos pela missão de tornar a gestão veterinária mais eficiente, organizada e humana.
+                        O VetMedica nasceu da vontade de resolver problemas reais que vimos em clínicas: fichas perdidas,
+                        agendas confusas e donos de pet sem acesso fácil às informações dos seus animais.
+                    </p>
+
+                    <!-- Descrição de QUEM SOMOS -->         
+                    <div class="quem-somos-check">
+                        <div class="quem-somos-icones">✓</div>
+                        <div class="quem-somos-texto"><strong>Equipe multidisciplinar</strong> — desenvolvedores front-end, back-end, suporte e banco de dados trabalhando juntos desde o primeiro dia do projeto.</div>
+                    </div>
+                    <div class="quem-somos-check">
+                        <div class="quem-somos-icones">✓</div>
+                        <div class="quem-somos-texto"><strong>Foco no mercado brasileiro</strong> — sistema 100% em português, com suporte local e pensado para a realidade das clínicas veterinárias daqui.</div>
+                    </div>
+                    <div class="quem-somos-check">
+                        <div class="quem-somos-icones">✓</div>
+                        <div class="quem-somos-texto"><strong>Evolução constante</strong> — novas funcionalidades são desenvolvidas com base no feedback real dos nossos clientes. O sistema cresce junto com a sua clínica.</div>
+                    </div>   
+                </div> 
+                
+
+
+                <!-- INFORMAÇÃO COLUNA 2 -->
+                <div class="quem-somos-pet">
+                    <div class="icon-paw-print" style="font-size:120px;opacity:.3">pet</div>
+                    <div class="quem-somos-card topo">
+                        <div class="icon-stethoscope"></div>
+                        <div>
+                            <div class="quem-somos-info">Prontuário digital</div>
+                            <div class="quem-somo-desc">Acesso em qualquer lugar</div>
                         </div>
+                    </div>
 
-                    <div class="grid-card baixo">
-                        <div class="icone-grid" style="background: #fef8ec;">📊</div>
-                            <div>
-                                <div class="grid-texto">Dashboard em tempo real</div>
-                                <div class="grid-subtexto">Controle financeiro completo</div>
-                            </div>
-                    </div>
-                </div>    
-
-                <!-- Descrição da gente -->
-                <p class="secao-desc">
-                    Somos um equipe de desenvolvedores e profissionais da área pet, unidos pela missão de tornar a gestão veterinária mais eficiente, organizada e humana.
-                </p> 
-                <div>
-                    <div>✓</div>
-                    <div>
-                        <strong>Equipe de TI</strong> - desenvolvedores, designers trabalhando juntos para criar a melhor solução.
+                    <div class="quem-somos-card baixo">
+                        <div class="icon-chart-column-increasing"></div>
+                        <div>
+                            <div class="quem-somos-info">Dashboard em tempo real</div>
+                            <div class="quem-somo-desc">Dados financeios e operacionais</div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <div>✓</div>
-                    <div>
-                        <strong>Foco no mercado brasileiro</strong> - sistema em português, com suporte local a adequado às necessidades das clínicas daqui.
-                    </div>
-                </div>
-                <div>
-                    <div>✓</div>
-                    <div>
-                        <strong>Evolução constante</strong> - novas funcionalidades são lançadas todo mês com base no feedback real dos nossos clientes.
-                    </div>
-                </div>
-            </div>    
-            
+            </div>      
      </section>
 
 <!--
