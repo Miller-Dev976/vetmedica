@@ -238,6 +238,39 @@
         color: var(--texto-fraco);
         margin-top: 4px;
     }
+    .header-usuario{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        border: 1px solid var(--borda);
+        cursor: pointer;
+        background: var(--branco);
+        border-radius: 10px;
+        padding: 12px 16px;
+    }
+    .header-perfil{
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: linear-gradient(135deg,var(--azul-principal), var(--azul-suave));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: #fff;
+    }
+    .header-nome{
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--texto-forte);
+    }
+    .header-cargo{
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: var(--texto-sutil);
+    }
     
 
 
@@ -310,9 +343,9 @@
 
     <main>
 
-<!-- 
-    CABEÇALHO DO PAINEL 
--->
+        <!-- 
+            CABEÇALHO DO PAINEL 
+        -->
          <header>
             <div class="header-text">
                 <button class="menu-lateral-mobile">
@@ -324,13 +357,14 @@
                 </div>
             </div>
 
-            <div>
-                <div>AD</div>
+            <div class="header-usuario">
+                <div class="header-perfil">AD</div>
+                <div>
+                    <div class="header-nome">Admin</div>
+                    <div class="header-cargo">Administrador</div>
+                </div>
             </div>
-            <div>
-                <div>Admin</div>
-                <div>Administrador</div>
-            </div>
+            
          </header>
 
          <div>
