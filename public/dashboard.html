@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,6 +156,87 @@
         font-weight: 400;
         white-space: nowrap;
         margin: 2px 10px;
+        transition: background 0.3s;
+    }
+    .menu-pagina:hover{
+        background: rgba(59, 143, 240, 0.212);
+        color: var(--azul-suave);
+        font-weight: 600
+    }
+    .menu-pagina:active{
+        background: rgba(54, 120, 196, 0.377);
+        color: #7baed4;
+    }
+    .menu-pagina.ativo{
+        background: rgba(59, 142, 240, .18);
+        color: var(--azul-suave);
+        font-weight: 600
+    }
+    .menu-pagina i{
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+    }
+    .menu-pagina-sair{
+        padding: 8px 0 20px;
+        border-top: 1px solid rgba(255, 255, 255, .06);
+    }
+
+
+/*
+    DESIGN DO CONTEUDO TODO
+*/
+    main{
+        margin-left: var(--menu-aberto);
+     /* background: #cbe3ff; */
+        padding: 28px 36px;
+    }
+    .menu-lateral-mobile{
+        display: none;   /* Essa propriedade faz com que o elemento suma - pois irei só ativar ele para o MOBILE */
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--borda);
+        background: var(--branco);
+        border-radius: 10px;
+        gap: 5px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .menu-lateral-mobile span{
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 20px;
+        background: var(--texto-medio);
+    }
+
+/*
+    DESIGN DO CABEÇALHO    
+*/
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    header h1{
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--texto-forte);
+    }
+    .header-text{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .header-data{
+        font-size: 14px;
+        color: var(--texto-fraco);
+        margin-top: 4px;
     }
     
 
@@ -192,7 +273,7 @@
 
         <!-- MENU DO MEIO | LISTA DAS PÁGINAS -->
          <nav class="paginas">
-            <a class="menu-pagina" href="dashboard.html">
+            <a class="menu-pagina ativo" href="dashboard.html">
                 <i data-lucide="layout-dashboard"></i>
                 <span>Dashboard</span>
             </a>
@@ -233,13 +314,13 @@
     CABEÇALHO DO PAINEL 
 -->
          <header>
-            <div>
-                <button>
+            <div class="header-text">
+                <button class="menu-lateral-mobile">
                     <span></span><span></span><span></span>
                 </button>
                 <div>
-                    <h1></h1>
-                    <p></p>
+                    <h1>Dashboard</h1>
+                    <p class="header-data" id="header-data-hoje"></p>
                 </div>
             </div>
 
@@ -259,6 +340,17 @@
     <script>
 
         lucide.createIcons();
+
+        // Como aparecer a data de hoje
+        document.getElementById('header-data-hoje').textContent = 
+            new Date().toLocaleDateString('pt-BR', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                hour: 'numeric',
+                minute: 'numeric',
+                year: 'numeric'
+            });
 
     </script>
 </body>
