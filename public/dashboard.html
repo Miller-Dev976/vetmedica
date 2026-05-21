@@ -271,6 +271,58 @@
         letter-spacing: 1px;
         color: var(--texto-sutil);
     }
+    .desempenho{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-bottom: 24px;
+        gap: 16px;
+    }
+    .desempenho-card{
+        background: var(--branco);
+        padding: 22px 24px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        box-shadow: var(--sombra-cartao);
+        border: 1px solid var(--borda-cartao);
+    }
+    .desempenho-icone{
+        width: 65px;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        flex-shrink: 0;
+    }
+    .desempenho-rotulo{
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        color: var(--texto-medio);
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+    .desempenho-valor{
+        font-weight: 700;
+        font-size: 26px;
+        color: var(--texto-forte);
+        line-height: 1.1;
+    }
+    .desempenho-detalhes{
+        font-size: 12px;
+        color: var(--texto-fraco);
+        margin-top: 6px;
+    }
+    .desempenho-detalhes a{
+        text-decoration: none;
+        color: var(--azul-principal);
+        font-weight: 600;
+    }
+    .desempenho-detalhes a:hover{
+        text-decoration: underline;
+    }
     
 
 
@@ -351,12 +403,14 @@
                 <button class="menu-lateral-mobile">
                     <span></span><span></span><span></span>
                 </button>
+
                 <div>
                     <h1>Dashboard</h1>
                     <p class="header-data" id="header-data-hoje"></p>
                 </div>
             </div>
 
+            <!-- Perfil do ADM -->
             <div class="header-usuario">
                 <div class="header-perfil">AD</div>
                 <div>
@@ -367,9 +421,53 @@
             
          </header>
 
-         <div>
-            <div>
-                <p>Faturamento</p>
+        <!--
+            INDICADOR DE DESEMPENHO
+        --> 
+         <div class="desempenho">
+            <div class="desempenho-card">
+                <div class="desempenho-icone" style="background: rgba(79, 236, 79, 0.233);">
+                    <i data-lucide="dollar-sign" style="width:35px;height:35px;color: var(--verde);"></i>
+                </div>
+                <div>
+                    <div class="desempenho-rotulo">Faturamento Hoje</div>
+                    <div class="desempenho-valor">R$ —</div>
+                    <div class="desempenho-detalhes">Carregando...</div>
+                </div>
+            </div>
+            <div class="desempenho-card">
+                <div class="desempenho-icone" style="background: rgba(114, 168, 238, 0.233);">
+                    <i data-lucide="calendar-check" style="width:35px;height:35px;color: var(--azul-principal);"></i>
+                </div>
+                <div>
+                    <div class="desempenho-rotulo">Atendimentos Hoje</div>
+                    <div class="desempenho-valor">—</div>
+                    <div class="desempenho-detalhes">
+                        <a href="agenda.html">Ver agenda →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="desempenho-card">
+                <div class="desempenho-icone" style="background: rgba(173, 79, 236, 0.233);">
+                    <i data-lucide="users" style="width:35px;height:35px;color: #5435a7;"></i>
+                </div>
+                <div>
+                    <div class="desempenho-rotulo">Tutores Cadastrados</div>
+                    <div class="desempenho-valor">—</div>
+                    <div class="desempenho-detalhes">
+                        <a href="tutores.html">Ver todos →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="desempenho-card">
+                <div class="desempenho-icone" style="background: rgba(255, 216, 44, 0.267);">
+                    <i data-lucide="paw-print" style="width:35px;height:35px;color: #f7bf08;"></i>
+                </div>
+                <div>
+                    <div class="desempenho-rotulo">Pets Cadastrados</div>
+                    <div class="desempenho-valor">—</div>
+                    <div class="desempenho-detalhes"></div>
+                </div>
             </div>
          </div>
 
@@ -379,6 +477,7 @@
 
     <script>
 
+        // Js do lucide para fazer a importação dos icones
         lucide.createIcons();
 
         // Como aparecer a data de hoje
