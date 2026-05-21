@@ -271,6 +271,10 @@
         letter-spacing: 1px;
         color: var(--texto-sutil);
     }
+
+    /*
+        DESING DESEMPENHO COM 4 CARDS
+    */
     .desempenho{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -321,6 +325,89 @@
         font-weight: 600;
     }
     .desempenho-detalhes a:hover{
+        text-decoration: underline;
+    }
+
+    /*
+        5 TIPOS DE INFORMAÇÕES DE HOJE EM CARDS
+    */
+    .tipos{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+    .tipos-card{
+        padding: 15px;
+        background: var(--branco);
+        border-radius: 12px;
+        border: 1px solid var(--borda-cartao);
+        text-align: center;
+        box-shadow: var(--sombra-cartao);
+        transition: transform .2s;
+    }
+    .tipos-card:hover{
+        transform: translateY(-3px);
+    }
+    .tipo-emoji{
+        font-size: 50px;
+        margin-bottom: 10px
+    }
+    .tipo-valor{
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--texto-forte)
+    }
+    .tipo-detalhe{
+        font-size: 12px;
+        color: var(--texto-fraco);
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: .5px;
+        margin-top: 4px;
+    }
+
+    /*
+        DESING DAS DUAS TABELAS DE ATENDIMENTO E FATURAMENTO
+    */
+    .painel{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 24px;
+    }
+    .painel-tabela{
+        padding: 24px;
+        background: var(--branco);
+        border: 1px solid var(--borda-cartao);
+        box-shadow: var(--sombra-cartao);
+        border-radius: 15px;
+    }
+    .painel-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+    }
+    .painel-titulo{
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--texto-forte);
+    }
+    .painel-subtitulo{
+        font-size: 12px;
+        color: var(--texto-sutil);
+    }
+    .painel-agenda{
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--azul-principal);
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        gap: 1px;
+    }
+    .painel-agenda:hover{
         text-decoration: underline;
     }
     
@@ -470,6 +557,110 @@
                 </div>
             </div>
          </div>
+
+         <!--
+             ATENDIMENTOS DE HOJE
+         -->
+        <div class="tipos"> 
+                <div class="tipos-card">
+                    <div class="tipo-emoji">
+                        <i class="icon-syringe"></i>
+                    </div>
+                    <div class="tipo-valor">—</div>
+                    <div class="tipo-detalhe">Vacinas hoje</div>
+                </div>
+                <div class="tipos-card">
+                    <div class="tipo-emoji">
+                        <i class="icon-stethoscope"></i>
+                    </div>
+                    <div class="tipo-valor">—</div>
+                    <div class="tipo-detalhe">Consultas hoje</div>
+                </div>
+                <div class="tipos-card">
+                    <div class="tipo-emoji">
+                        <i class="icon-refresh-ccw"></i>
+                    </div>
+                    <div class="tipo-valor">—</div>
+                    <div class="tipo-detalhe">Retornos hoje</div>
+                </div>
+                <div class="tipos-card">
+                    <div class="tipo-emoji">
+                        <i class="icon-siren"></i>
+                    </div>
+                    <div class="tipo-valor">—</div>
+                    <div class="tipo-detalhe">Emergência hoje</div>
+                </div>
+                <div class="tipos-card">
+                    <div class="tipo-emoji">
+                        <i class="icon-heart-pulse"></i>
+                    </div>
+                    <div class="tipo-valor">—</div>
+                    <div class="tipo-detalhe">Cirurgias hoje</div>
+                </div>
+        </div>
+
+        <!--
+            INFORMAÇÕES DE ATENDIMENTO E FATURAMENTOS DE HOJE     
+        -->
+        <div class="painel">
+
+            <!-- Painel do próximo atendimento -->
+            <div class="painel-tabela">
+                <div class="painel-header">
+                    <div>
+                        <div class="painel-titulo">Próximos Atendimentos</div>
+                        <div class="painel-subtitulo">Agendados para hoje</div>
+                    </div>
+                    <a href="agenda.html" class="painel-agenda">
+                        Abrir agenda <i data-lucide="chevron-right" style="width: 15px; height: 15px;"></i>
+                    </a>
+                </div>
+                <div id="lista-proximos"></div>
+            </div>
+
+            <!-- Painel do faturamento -->
+            <div class="painel-tabela">
+                <div class="painel-header">
+                    <div>
+                        <div class="painel-titulo">Faturamento por Pagamento</div>
+                        <div class="painel-subtitulo">Entradas de hoje</div>
+                    </div>
+                </div>
+                <div id="lista-pagamentos"></div>
+            </div>
+        </div>
+
+        <!--
+            INFORMAÇÕES DE ALERTAS E RESUMO
+        -->
+        <div class="painel">
+
+            <!-- Painel de alertas -->
+            <div class="painel-tabela">
+                <div class="painel-header">
+                    <div>
+                        <div class="painel-titulo">Alertas do Sistema</div>
+                        <div class="painel-subtitulo">Item que precisam de ateção</div>
+                    </div>
+                    <a href="estoque.html" class="painel-agenda">
+                        Ver estoque <i data-lucide="chevron-right" style="width: 15px;height: 15px;"></i>
+                    </a>
+                </div>
+                <div id="lista-alertas"></div>
+            </div>
+
+            <!-- Painel de resumo -->
+            <div class="painel-tabela">
+                <div class="painel-header">
+                    <div>
+                        <div class="painel-titulo">Resumo do Sistema</div>
+                        <div class="painel-subtitulo">Visão geral de todas as áreas</div>
+                    </div>
+                </div>
+                <div id="resumo-sistema"></div>
+            </div>
+        </div>
+             
 
     </main>
 
