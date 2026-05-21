@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://unpkg.com/lucide-static/font/lucide.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
     :root {
       --fundo-pagina: #f0f4f9;
@@ -40,6 +45,8 @@
     body{
         font-family: 'DM Sans', sans-serif;
         background: var(--fundo-pagina);
+        color: var(--texto-forte);
+        min-height: 100vh;
     }
 
     /* DESIGN | MENU LATERAL */
@@ -55,6 +62,11 @@
         padding: 0;
         z-index: 100;
         overflow: hidden;
+        transition: width .3s cubic-bezier(.4, 0, .2, 1);
+    }
+    /* design aonde a função JS clica e ativa essa propriedade */
+    .recolhido{ 
+        width: var(--menu-fechado);
     }
     .menu-topo{
         display: flex;
@@ -99,6 +111,9 @@
         height: 2px;
         border-radius: 2px;
     }
+    aside.recolhido .menu-icone:hover .menu-icone-hover{
+        opacity: 1;
+    }
     .menu-texto{
         flex: 1;
         white-space: nowrap;
@@ -138,6 +153,28 @@
         background: #fff;
         border-radius: 2px;
     }
+
+    /* menu lateral recolhido */
+    aside.recolhido .menu-texto{
+        display: none;
+    }
+    aside.recolhido .botao-hamburguer{
+        display: none;
+    }
+    aside.recolhido .menu-topo{
+        justify-content: center;
+        padding: 20px 0;
+    }
+    aside.recolhido .menu-pagina span{
+        display: none;
+    }
+    aside.recolhido .menu-pagina{
+        justify-content: center;
+        padding: 14px 0;
+        margin: 2px 8px;
+    }
+
+    /* paginação do menu lateral */
     .paginas{
         flex: 1;
         padding: 16px 0;
@@ -180,6 +217,17 @@
     .menu-pagina-sair{
         padding: 8px 0 20px;
         border-top: 1px solid rgba(255, 255, 255, .06);
+    }
+    /* design do menu */
+    .menu-overlay{
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .5);
+        z-index: 99
+    }
+    .menu-overlay.visivel{
+        display: block
     }
 
 
@@ -413,18 +461,60 @@
     
 
 
+/*
+    RESPONSIVIDADE PARA O MOBILE
+*/
+    @media(max-width:900px){
+        aside{
+            width: 280px;
+            left: -280px;
+            transition: left .3s
+        }
+
+        aside.recolhido{
+            width: 280px;
+            left: -280px;
+        }
+
+        aside.mobile-aberto{
+            left: 0;
+        }
+        aside.mobile-aberto .menu-texto{
+            display: block;
+        }
+        aside.mobile-aberto .botao-hamburguer{
+            display: flex;
+        }
+        aside.mobile-aberto .menu-pagina span{
+            display: inline;
+        }
+        aside.mobile-aberto .menu-pagina{
+            justify-content: flex-start;
+            padding: 13px 22px;
+            margin: 2px 10px;
+        }
+        aside.mobile-aberto .menu-topo{
+            justify-content: flex-start;
+            padding: 20px 16px;
+        }
+    }
+
+    @media(max-width:500px){
+    
+    }
 
     </style>
 </head>
 <body>
+    <div class="menu-overlay" id="menu-overlay"></div>
     
-    <aside>
+    <aside id="menu-lateral">
 
         <!-- MENU DO TOPO | IMAGEM E TITULO -->
         <div class="menu-topo">
 
             <!-- ICONE -->
-             <div class="menu-icone">
+             <div class="menu-icone" id="logo-clicavel">
                 <img src="img/logo.png" alt="VetMedica" width="39px">
                 <div class="menu-icone-hover">
                     <span></span><span></span><span></span>
@@ -437,7 +527,7 @@
                 <div class="menu-subnome">Painel Administrativo</div>
             </div>
 
-            <button class="botao-hamburguer">
+            <button class="botao-hamburguer" id="botao-hamburguer">
                 <span></span><span></span><span></span>
             </button>
 
@@ -681,6 +771,33 @@
                 minute: 'numeric',
                 year: 'numeric'
             });
+
+        // BARRA DE MENU LATERAL
+        var menu = document.getElementById('menu-lateral'), overlay = document.getElementById('menu-overlay');
+        function ehMobile(){
+            return window.innerWidth <= 900 
+        }
+        document.getElementById('botao-hamburguer').addEventListener('click', function() {
+            if (ehMobile()) {
+                menu.classList.remove('mobile-aberto');
+                overlay.classList.remove('visivel')
+            } else {
+                menu.classList.toggle('recolhido')
+            }
+        });
+        document.getElementById('logo-clicavel').addEventListener('click', function() {
+            if (ehMobile() && menu.classList.contains('recolhido'))
+            menu.classList.remove('recolhido')
+        });
+        document.getElementById('botao-hamburguer').addEventListener('click', function() {
+            menu.classList.add('mobile-aberto');
+            overlay.classList.add('visivel')
+        });
+        overlay.addEventListener('click', function() {
+            menu.classList.remove('mobile-aberto');
+            overlay.classList.remove('visivel')
+        });
+
 
     </script>
 </body>
