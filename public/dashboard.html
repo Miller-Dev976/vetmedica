@@ -65,7 +65,7 @@
         transition: width .3s cubic-bezier(.4, 0, .2, 1);
     }
     /* design aonde a função JS clica e ativa essa propriedade */
-    .recolhido{ 
+    aside.recolhido{ 
         width: var(--menu-fechado);
     }
     .menu-topo{
@@ -142,6 +142,7 @@
         flex-shrink: 0;
         border-radius: 10px;
         flex-direction: column;
+        transition: background .2s;
     }
     .botao-hamburguer:hover{
         background: rgba(255, 255, 255, .14);
@@ -227,7 +228,7 @@
         z-index: 99
     }
     .menu-overlay.visivel{
-        display: block
+        display: block;
     }
 
 
@@ -238,6 +239,10 @@
         margin-left: var(--menu-aberto);
      /* background: #cbe3ff; */
         padding: 28px 36px;
+    }
+    
+    aside.recolhido~main{
+        margin-left: var(--menu-fechado);
     }
     .menu-lateral-mobile{
         display: none;   /* Essa propriedade faz com que o elemento suma - pois irei só ativar ele para o MOBILE com JS */
@@ -497,10 +502,49 @@
             justify-content: flex-start;
             padding: 20px 16px;
         }
+        main{
+            margin-left: 0;
+            padding: 20px 16px;
+        }
+        aside.recolhido~main{
+            margin-left: 0;
+        }
+        .menu-lateral-mobile{
+            display: flex;
+        }
+        .header-usuario{
+            display: none;
+        }
+        .desempenho{
+            grid-template-columns: 1fr 1fr;
+        }
+        .tipos{
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .painel{
+            grid-template-columns: 1fr;
+        }
+
+
     }
 
     @media(max-width:500px){
-    
+        .desempenho{
+            grid-template-columns: 1fr;
+        }
+        .desempenho-card{
+            padding: 16px 18px;
+        }
+        .desempenho-valor{
+            font-size: 24px;
+        }
+        .tipos{
+            grid-template-columns: 1fr;
+        }
+        main{
+            padding: 16px 12px;
+        }
+        
     }
 
     </style>
@@ -577,7 +621,7 @@
         -->
          <header>
             <div class="header-text">
-                <button class="menu-lateral-mobile">
+                <button class="menu-lateral-mobile" id="menu-lateral-mobile">
                     <span></span><span></span><span></span>
                 </button>
 
@@ -774,6 +818,7 @@
 
         // BARRA DE MENU LATERAL
         var menu = document.getElementById('menu-lateral'), overlay = document.getElementById('menu-overlay');
+
         function ehMobile(){
             return window.innerWidth <= 900 
         }
@@ -786,10 +831,10 @@
             }
         });
         document.getElementById('logo-clicavel').addEventListener('click', function() {
-            if (ehMobile() && menu.classList.contains('recolhido'))
+            if (!ehMobile() && menu.classList.contains('recolhido'))
             menu.classList.remove('recolhido')
         });
-        document.getElementById('botao-hamburguer').addEventListener('click', function() {
+        document.getElementById('menu-lateral-mobile').addEventListener('click', function() {
             menu.classList.add('mobile-aberto');
             overlay.classList.add('visivel')
         });
