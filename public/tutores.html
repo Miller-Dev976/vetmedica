@@ -9,11 +9,11 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
     :root {
       --fundo-pagina: #f0f4f9;
@@ -240,6 +240,7 @@
         margin-left: var(--menu-aberto);
      /* background: #cbe3ff; */
         padding: 28px 36px;
+        transition: margin-left .3s cubic-bezier(.4, 0, .2, 1);
     }
     
     aside.recolhido~main{
@@ -324,6 +325,11 @@
         font-weight: 600;
         letter-spacing: 1px;
         color: var(--texto-sutil);
+    }
+
+    /* DESIGN DA SEÇÃO CARDS */
+    .linha-estatica{
+        display: flex;
     }
 
     </style>
@@ -426,8 +432,17 @@
         <!--
             CARDS DAS INFORMAÇÕES DE TUTORES E PETS
         -->
+        <div class="linha-estatica" id="estatica"></div>
+
+
         <section class="stats-container">
-            <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-tutores">0</h3><p>TUTORES</p></div></div>
+            <div class="stat-card">
+                <div class="stat-box"></div>
+                <div class="stat-info">
+                    <h3 id="total-tutores">0</h3>
+                    <p>TUTORES</p>
+                </div>
+            </div>
             <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-pets">0</h3><p>PETS</p></div></div>
             <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-caes">0</h3><p>CÃES</p></div></div>
             <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-gatos">0</h3><p>GATOS</p></div></div>
@@ -464,7 +479,6 @@
 
     // Js do lucide para fazer a importação dos icones
     lucide.createIcons();
-
     // Como aparecer a data de hoje
 //    document.getElementById('header-data-hoje').textContent = 
 //        new Date().toLocaleDateString('pt-BR', {
@@ -502,6 +516,27 @@
         menu.classList.remove('mobile-aberto');
         overlay.classList.remove('visivel')
     });
+
+
+    document.getElementById('page-sub').textContent = 'Gerencie tutores e seus pets';
+    var tutores = [], pacientes = [];
+    function carregar() {
+      Promise.all([fetch('/api/tutores').then(r => r.json()).catch(() => []), fetch('/api/pacientes').then(r => r.json()).catch(() => [])])
+        .then(function (r) { tutores = r[0]; pacientes = r[1]; renderStats(); renderLista() });
+    }
+
+
+    /* JS dos CARDS */
+    function renderStats() {
+      var ta = tutores.filter(t => t.ativo).length;
+      document.getElementById('estatica').innerHTML =
+        '<div class="stat-mini"><div class="stat-mini-icone" style="background:var(--azul-fundo)"><i data-lucide="users" style="width:18px;height:18px;color:var(--azul-principal)"></i></div><div><div class="stat-mini-valor">' + tutores.length + '</div><div class="stat-mini-rotulo">Tutores</div></div></div>' +
+        '<div class="stat-mini"><div class="stat-mini-icone" style="background:var(--verde-fundo)"><i data-lucide="paw-print" style="width:18px;height:18px;color:var(--verde)"></i></div><div><div class="stat-mini-valor">' + pacientes.length + '</div><div class="stat-mini-rotulo">Pets</div></div></div>' +
+        '<div class="stat-mini"><div class="stat-mini-icone" style="background:var(--amarelo-fundo)"><i data-lucide="dog" style="width:18px;height:18px;color:var(--amarelo)"></i></div><div><div class="stat-mini-valor">' + pacientes.filter(p => p.especie === 'Cão').length + '</div><div class="stat-mini-rotulo">Cães</div></div></div>' +
+        '<div class="stat-mini"><div class="stat-mini-icone" style="background:var(--roxo-fundo)"><i data-lucide="cat" style="width:18px;height:18px;color:var(--roxo)"></i></div><div><div class="stat-mini-valor">' + pacientes.filter(p => p.especie === 'Gato').length + '</div><div class="stat-mini-rotulo">Gatos</div></div></div>';
+      lucide.createIcons();
+    }
+
 
 </script>
 
