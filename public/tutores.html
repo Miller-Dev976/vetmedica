@@ -363,7 +363,7 @@
                 <i data-lucide="layout-dashboard"></i>
                 <span>Dashboard</span>
             </a>
-            <a class="menu-pagina" href="tutores.html">
+            <a class="menu-pagina ativo" href="tutores.html">
                 <i data-lucide="users"></i>
                 <span>Tutores e Pacientes</span>
             </a>
@@ -379,7 +379,7 @@
                 <i data-lucide="package"></i>
                 <span>Estoque</span>
             </a>
-            <a class="menu-pagina ativo" href="usuarios.html">
+            <a class="menu-pagina" href="usuarios.html">
                 <i data-lucide="user-cog"></i>
                 <span>Usuários</span>
             </a>
@@ -406,8 +406,8 @@
                 </button>
 
                 <div>
-                    <h1>Controle de Usuários</h1>
-                    <p class="header-data">Gerencie funcionários, cargos e acessos ao sistema</p>
+                    <h1>Tutores e Pacientes</h1>
+                    <p class="header-data">Gerencie tutores e seus pets</p>
                <!-- <p class="header-data" id="header-data-hoje"></p> -->
                 </div>
             </div>
@@ -422,6 +422,41 @@
             </div>
             
          </header>
+
+        <!--
+            CARDS DAS INFORMAÇÕES DE TUTORES E PETS
+        -->
+        <section class="stats-container">
+            <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-tutores">0</h3><p>TUTORES</p></div></div>
+            <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-pets">0</h3><p>PETS</p></div></div>
+            <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-caes">0</h3><p>CÃES</p></div></div>
+            <div class="stat-card"><div class="stat-box"></div><div class="stat-info"><h3 id="total-gatos">0</h3><p>GATOS</p></div></div>
+        </section>
+
+        <section class="action-bar">
+            <input type="text" class="search-input" placeholder="Buscar por nome, e-mail ou CPF">
+            <div class="buttons-group">
+                <button class="btn btn-primary" onclick="document.getElementById('modal-tutor').style.display='flex'">Novo Tutor +</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('modal-pet').style.display='flex'">Novo Pet</button>
+            </div>
+        </section>
+
+        <section class="grid-container">
+            <div class="tutor-card">
+                <div class="tutor-header">
+                    <div class="tutor-initial">H</div>
+                    <div><div class="tutor-name">Hiago Carvalho</div><div class="tutor-cpf">CPF: 333.000.000-00</div></div>
+                </div>
+                <div class="tutor-contact">(11) 99999-0000<br>hiagocarvalho2020@hotmail.com</div>
+                <div class="pet-tags"><span class="tag">Rex - Cão</span><span class="tag">Mia - Gato</span></div>
+                
+                <div class="card-actions">
+                    <button class="btn-card btn-edit" onclick="document.getElementById('modal-editar-tutor').style.display='flex'">Editar</button>
+                    <button class="btn-card btn-delete" onclick="excluirTutor(this)">Excluir</button>
+                </div>
+                
+            </div>
+        </section>
 
     </main>
 
