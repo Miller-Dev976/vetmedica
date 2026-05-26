@@ -327,6 +327,51 @@
         color: var(--texto-sutil);
     }
 
+
+    /* DESIGN CARDS DE ESTATISTICAS */
+    .cartoes{
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+    }
+    .cards{
+        padding: 20px 24px;
+        border-radius: 10px;
+        flex: 1 1 160px;
+        min-width: 160px;
+        background: var(--branco);
+        border: 1px solid var(--borda-cartao);
+        box-shadow: var(--sombra-cartao);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+    .card-icone{
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+    }
+    .card-rotulo{
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--texto-fraco);
+    }
+    .card-valor{
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 2px;
+        color: var(--texto-forte);
+    }
+    
+
+
+
     </style>
 </head>
 <body>
@@ -423,6 +468,70 @@
             </div>
             
          </header>
+
+        <!-- 
+            CARTÕES DE CARACTERÍSTICAS 
+        -->
+          <div class="cartoes" id="cartoes">
+            <div class="cards">
+                <div class="card-icone" style="background:var(--azul-fundo)">
+                    <i data-lucide="users" style="width:25px;height:25px;color:var(--azul-principal)"></i>
+                </div>
+                <div>
+                    <div class="card-rotulo">Total</div>
+                    <div class="card-valor">—</div>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card-icone" style="background: #26e78d36">
+                    <i data-lucide="user-check" style="width: 25px;height: 25px;color: var(--verde)"></i>
+                </div>
+                <div>
+                    <div class="card-rotulo">Ativos</div>
+                    <div class="card-valor">—</div>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card-icone" style="background: var(--azul-fundo);">
+                    <i data-lucide="stethoscope" style="width:25px;height:25px;color:var(--azul-principal)"></i>
+                </div>
+                <div>
+                    <div class="card-rotulo">Veterinários</div>
+                    <div class="card-valor">—</div>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card-icone" style="background: var(--vermelho-fundo);">
+                    <i data-lucide="user-x" style="width:25px;height:25px;color:var(--vermelho)"></i>
+                </div>
+                <div>
+                    <div class="card-rotulo">Inativos</div>
+                    <div class="card-valor">—</div>
+                </div>
+            </div>
+          </div>
+
+        <!--
+            BARRA DE BUSCA + FILTRO + BOTAO DE CADASTRAR  
+        -->
+            <div class="barra">
+                <div class="barra-filtro">
+                    <div class="barra-pesquisa">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="buscar" placeholder="Buscar por nome, e-mail ou CPF..." />
+                    </div>
+                    <select class="barra-cargos" id="barra-cargos">
+                        <option value="">Todos os Cargos</option>
+                        <option value="veterinario">Veterinários</option>
+                        <option value="recepcionista">Recepcionistas</option>
+                        <option value="adm">Administradores</option>
+                    </select>
+                </div>
+                <a href="cadastro.html" class="barra-cadastrar">
+                    <i data-lucide="user-plus"></i>
+                    Novo Funcionário
+                </a>
+            </div>
 
     </main>
 
