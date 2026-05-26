@@ -370,6 +370,60 @@
     }
     
 
+    /* DESIGN BARRA DE FILTRAGEM E BUSCA */
+    .barra{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .barra-filtro{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        flex: 1;
+        gap: 12px;
+    }
+    .barra-pesquisa{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        max-width: 400px;
+        flex: 1;
+        padding: 10px 16px;
+        min-width: 280px;
+        background: var(--branco);
+        border-radius: 13px;
+        border: 1px solid var(--borda);
+    }
+    .barra-pesquisa input{
+        border: none;
+        width: 100%;
+        color: var(--texto-forte);
+        outline: none; /* quando voce clica a borda do campo de input some */
+        background: transparent;
+        font-size: 14px;
+        font-family: inherit;
+    }
+    .barra-cargos{
+        background: var(--branco);
+        border: 1px solid var(--borda-cartao);
+        padding: 10px 16px;
+        border-radius: 13px;
+        font-size: 14px;
+        color: var(--texto-forte);
+        font-family: inherit;
+        outline: none;
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa8bc' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        padding-right: 30px;
+    }
+
 
 
     </style>
@@ -517,7 +571,7 @@
             <div class="barra">
                 <div class="barra-filtro">
                     <div class="barra-pesquisa">
-                        <i data-lucide="search"></i>
+                        <i data-lucide="search" style="width: 20px;height: 20px;color: var(--texto-fraco);"></i>
                         <input type="text" id="buscar" placeholder="Buscar por nome, e-mail ou CPF..." />
                     </div>
                     <select class="barra-cargos" id="barra-cargos">
