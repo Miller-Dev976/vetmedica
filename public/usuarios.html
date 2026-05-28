@@ -423,6 +423,27 @@
         background-position: right 12px center;
         padding-right: 30px;
     }
+    .barra-cadastrar{
+        background: linear-gradient(135deg, var(--azul-principal), var(--azul-claro));
+        padding: 11px 24px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 10px;
+        box-shadow: var(--sombra-cartao);
+        transition: transform 0.2s, box-shadow 0.2s;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    .barra-cadastrar:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(26, 111, 212, 0.4);
+    }
 
 
 
@@ -585,6 +606,35 @@
                     <i data-lucide="user-plus"></i>
                     Novo Funcionário
                 </a>
+            </div>
+            
+        <!--
+            TABELA DE USUÁRIOS    
+        -->
+            <div>
+                <div>
+                    <div>
+                        <div>Funcionários cadastrados</div>
+                        <div>Carregando</div>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Funcionário</th>
+                            <th>CPF</th>
+                            <th>Telefone</th>
+                            <th>Cargo</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr colspan="6" class="carregando">
+                            <td>Carregando funcionarios...</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
     </main>
