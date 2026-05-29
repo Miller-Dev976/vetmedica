@@ -446,6 +446,62 @@
     }
 
 
+    /* DESIGN DA TABELA DE USUARIOS */
+    .usuario{
+        background: var(--branco);
+        border: 1px solid var(--borda-cartao);
+        border-radius: 16px;
+        padding: 0;
+        box-shadow: var(--sombra-cartao);
+        overflow: hidden;
+    }
+    .usuario-painel{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--borda-cartao);
+    }
+    .usuario-titulo{
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--texto-forte);
+    }
+    .usuario-subtitulo{
+        font-size: 13px;
+        color: var(--texto-sutil);
+        margin-top: 2px;
+    }
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    thead th{
+        text-align: left;
+        padding: 14px 20px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--texto-fraco);
+        background: var(--fundo-pagina);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--borda-cartao);
+    }
+    tbody td{
+        padding: 16px 20px;
+        font-size: 14px;
+        color: var(--texto-forte);
+        border-bottom: 1px solid var(--borda-cartao);
+        vertical-align: middle;
+    }
+    tbody tr:last-child td{
+        border-bottom: none;
+    }
+    tbody tr:hover td{
+        background: rgba(26, 111, 212, 0.02);
+    }
+
+
 
     </style>
 </head>
@@ -611,11 +667,11 @@
         <!--
             TABELA DE USUÁRIOS    
         -->
-            <div>
-                <div>
+            <div class="usuario">
+                <div class="usuario-painel">
                     <div>
-                        <div>Funcionários cadastrados</div>
-                        <div>Carregando</div>
+                        <div class="usuario-titulo">Funcionários cadastrados</div>
+                        <div class="usuario-subtitulo" id="usuario-resultado">Carregando...</div>
                     </div>
                 </div>
                 <table>
